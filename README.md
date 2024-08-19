@@ -49,7 +49,7 @@ Installation
 Clone the repo
 sh
 Copy code
-git clone https://github.com/yourusername/ecommerce-template.git
+git clone https://github.com/gfouz/travels-website.git
 Navigate to the project directory
 sh
 Copy code
