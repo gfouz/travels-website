@@ -1,0 +1,195 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.customized-link a {
+  @apply font-bold text-amber-200;
+}
+.th-class {
+  @apply border border-gray-500 font-extrabold text-xs tracking-widest text-gray-700;
+}
+
+.td-class {
+  @apply px-4 py-3 text-gray-100;
+}
+.tr-class {
+  @apply mb-4;
+}
+
+:root {
+  font-family: Aptos, Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  max-width: 1300px;
+  margin: 0 auto;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  margin: 0 auto;
+  height: 100%;
+  max-width: 1300px;
+  min-height: 100vh;
+  font-size: clamp(1rem, calc(0.93rem + 0.33vw), 1.19rem);
+}
+.grid-auto-fit {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 300px));
+}
+.grid-post-card {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 320px));
+}
+
+.selected_categories:checked {
+  color: #ffffff;
+  background-color: #334155;
+}
+ul {
+  margin: 0;
+  padding: 0;
+}
+li {
+  margin: 0;
+  padding: 0;
+}
+
+h3 {
+  margin-block-start: 1em;
+}
+p {
+  margin-block: 1rem;
+}
+
+a {
+  /*color: #007bff; /* Example link color */
+  text-decoration: none;
+  background-color: transparent;
+}
+
+/* Adjustments for smaller screens */
+/*@media screen and (max-width: 576px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+  }
+}*/
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+.white-text-shadow {
+  text-shadow: 0 0 10px #f1f1f1;
+}
+
+/* Responsive layout - makes a one column layout instead of a two-column layout */
+@media (max-width: 900px) {
+  .flex-container {
+    grid-template-columns: 1fr;
+  }
+  .sidebar-md {
+    margin: 2em 0;
+  }
+}
+
+.responsive-img {
+  max-width: 100%;
+  height: auto;
+}
+.object-fill-img {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
+
+.loader {
+  width: 50px;
+  aspect-ratio: 4;
+  background: radial-gradient(circle closest-side, #000 70%, #0000) 0 /
+    calc(100% / 3) 100% space;
+  clip-path: inset(0 100% 0 0);
+  animation: dot 2s steps(4) infinite;
+}
+@keyframes dot {
+  to {
+    clip-path: inset(0 -34% 0 0);
+  }
+}
+
+.input-errors p {
+  overflow: hidden;
+  border-right: 0.15em solid orange;
+  white-space: nowrap;
+  margin: 0 auto;
+  letter-spacing: 0.15em; /* Adjust as needed */
+  animation-delay: 1s;
+  animation-fill-mode: forwards;
+  animation:
+    typing 2s steps(40, end),
+    blink-caret 0.75s step-end infinite;
+}
+
+/* The typing effect */
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: orange;
+  }
+}
+
+.girl-motion {
+  animation: slate-girl 0.7s;
+}
+
+@keyframes slate-girl {
+  from {
+    scale: 0;
+  }
+  to {
+    scale: 1;
+  }
+}
+.grid-auto-fit {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.opacity {
+  animation: opacity 1s;
+  transition: all 1s;
+}
+
+@keyframes opacity {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
