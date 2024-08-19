@@ -8,10 +8,10 @@ export default function HomepageButton() {
       color='success'
       className='px-10'
       onClick={() => {
-        navigate('/');
+        navigate('/dashboard');
       }}
     >
-      Homepage
+      Dashboard
     </Button>
   );
 }

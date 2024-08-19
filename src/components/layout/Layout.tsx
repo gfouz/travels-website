@@ -4,20 +4,17 @@ import Footer from '../../components/footer/Footer.tsx';
 
 interface LayoutProps {
   styles?: string;
+  links: string[];
   children: React.ReactNode;
 }
 
-const links = [
+const defaultlinks = [
   '/',
   '/login',
   '/register',
-  '/users',
-  '/tickets',
-  '/checkin',
-  '/settings'
 ];
 
-const Layout = ({ styles, children }: LayoutProps) => {
+const Layout = ({ styles, links=defaultlinks, children }: LayoutProps) => {
   return (
     <section className={`dark h-full w-full ${styles}`}>
       <header className='sticky top-0 left-0 z-30'>

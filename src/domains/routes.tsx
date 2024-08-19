@@ -6,6 +6,7 @@ const Users = lazy(() => import('./users/users.tsx'));
 const Tickets = lazy(() => import('./tickets/Tickets.tsx'));
 const Checkin = lazy(() => import('./checkin/Checkin.tsx'));
 const Settings = lazy(() => import('./settings/Settings.tsx'));
+const Dashboard= lazy(() => import('./dashboard.tsx'));
 const ErrorPage = lazy(() => import('./error-page.tsx'));
 
 const About = lazy(() => import('./about.tsx'));
@@ -51,6 +52,12 @@ export const list = [
   {
     path: 'Settings/',
     element: <Settings />,
+    errorElement: <ErrorPage />,
+  
+  },
+  {
+    path: 'dashboard/',
+    element: <Dashboard />,
     errorElement: <ErrorPage />,
   
   },
