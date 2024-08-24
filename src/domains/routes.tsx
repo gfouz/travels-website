@@ -9,17 +9,11 @@ const Settings = lazy(() => import('./settings/Settings.tsx'));
 const Dashboard= lazy(() => import('./dashboard.tsx'));
 const ErrorPage = lazy(() => import('./error-page.tsx'));
 
-const About = lazy(() => import('./about.tsx'));
 
 export const list = [
   {
     path: '/',
     element: <Root />,
-    errorElement: <ErrorPage />,
-  },
-  {
-    path: '/about',
-    element: <About />,
     errorElement: <ErrorPage />,
   },
   {

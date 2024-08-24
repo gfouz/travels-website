@@ -1,4 +1,4 @@
-import { Auth } from '../schemas/auth.schema';
+import { Auth } from '../../schemas/auth.schema';
 
 const url = 'http://127.0.0.1:8000/api/users/register';
 

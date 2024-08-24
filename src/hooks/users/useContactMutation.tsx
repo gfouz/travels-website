@@ -1,5 +1,5 @@
 import { useMutation } from '@tanstack/react-query';
-import { ContactInterface } from '../schemas/contact.schema.ts';
+import { ContactInterface } from '../../schemas/contact.schema.ts';
 
 interface MutationFnInterface {
   (data: any): Promise<any>;

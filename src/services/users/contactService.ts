@@ -1,4 +1,4 @@
-import { ContactInterface } from '../schemas/contact.schema.ts';
+import { ContactInterface } from '../../schemas/contact.schema.ts';
 
 const formspree_url = 'https://formspree.io/f/xdovlonj';
 
