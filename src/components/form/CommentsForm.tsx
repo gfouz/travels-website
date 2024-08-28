@@ -24,11 +24,9 @@ const CommentsForm = ({ styles }: CommentsFormProps) => {
 
   const { mutation } = useContactMutation(contactService);
   //console.log(mutation.data?.Error_Message);
-   
 
   const onSubmit: SubmitHandler<ContactInterface> = async (data) => {
     await mutation.mutateAsync(data);
-    
   };
   return (
     <section className={`rounded-lg rounded-t-lg ${styles}`}>

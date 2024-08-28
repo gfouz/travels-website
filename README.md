@@ -57,6 +57,8 @@ cd ecommerce-template
 Install dependencies
 sh
 Copy code
+
+npm install @tanstack/react-table
 npm install
 
 # or

@@ -8,13 +8,9 @@ interface LayoutProps {
   children: React.ReactNode;
 }
 
-const defaultlinks = [
-  '/',
-  '/login',
-  '/register',
-];
+const defaultlinks = ['/', '/login', '/register'];
 
-const Layout = ({ styles, links=defaultlinks, children }: LayoutProps) => {
+const Layout = ({ styles, links = defaultlinks, children }: LayoutProps) => {
   return (
     <section className={`dark h-full w-full ${styles}`}>
       <header className='sticky top-0 left-0 z-30'>

@@ -22,11 +22,11 @@ export default function NextModal({
       <div className='flex flex-wrap gap-3'>
         <Button
           variant='shadow'
-          color='secondary'
+          color='danger'
           onPress={() => onOpen()}
           className='capitalize'
         >
-          Read more!
+          Actions
         </Button>
       </div>
       <Modal backdrop='blur' isOpen={isOpen} onClose={onClose}>

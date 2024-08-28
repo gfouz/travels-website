@@ -35,7 +35,7 @@ const Dropdown = () => {
             <span className='font-bold text-white'>Travels</span>
           </Button>
         </div>
-     
+
         <motion.nav
           role='menu'
           className={` ${isOpen ? 'open' : 'closed'} bg-rose-500 w-full absolute top-[60px] left-0 rounded-b-xl`}
@@ -43,7 +43,6 @@ const Dropdown = () => {
           variants={variants}
         >
           <div
-            
             className={` ${isOpen ? 'open' : 'closed'}  capitalize h-[160px] flex flex-col justify-evenly text-center text-white text-sm`}
           >
             <motion.a
@@ -74,8 +73,6 @@ const Dropdown = () => {
             </motion.a>
           </div>
         </motion.nav>
-    
-        
       </div>
     </section>
   );

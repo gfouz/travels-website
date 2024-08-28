@@ -1,7 +1,6 @@
 import { z } from 'zod';
 import { InputGeneric } from './types';
 
-
 export const PostSchema = z.object({
   author_id: z.string(),
   title: z.string().min(4, '*Title is required'),
