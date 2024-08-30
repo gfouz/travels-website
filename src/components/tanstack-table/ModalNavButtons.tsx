@@ -5,13 +5,13 @@ export default function ModalNavButton() {
   return (
     <>
       <div className='flex justify-evenly items-center'>
-        <Button showAnchorIcon href='/create-flight' as={Link} size='sm'>
+        <Button showAnchorIcon href='flights/create' as={Link} size='sm'>
           Añadir
         </Button>
-        <Button showAnchorIcon href='/update-flight' as={Link} size='sm'>
+        <Button showAnchorIcon href='flights/update' as={Link} size='sm'>
           Editar
         </Button>
-        <Button showAnchorIcon href='/copy-flight' as={Link} size='sm'>
+        <Button showAnchorIcon href='flights/duplicate' as={Link} size='sm'>
           Duplicar
         </Button>
         <Button
@@ -26,7 +26,7 @@ export default function ModalNavButton() {
       </div>
       <Button
         showAnchorIcon
-        href='/create-ticket'
+        href='tickets/create/'
         as={Link}
         size='sm'
         color='warning'

@@ -1,10 +1,10 @@
 import Layout from '../layout/DefaultLayout.tsx';
-import FlightTable from './table/FlightTable.tsx';
+import TanStackTable from '../../components/tanstack-table/TanStackTable.tsx';
 
 const Flights = () => {
   return (
     <Layout>
-      <FlightTable />
+      <TanStackTable />
     </Layout>
   );
 };

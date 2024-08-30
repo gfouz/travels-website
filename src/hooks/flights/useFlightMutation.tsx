@@ -10,10 +10,10 @@ export const useAcyncMutation = (
     mutationFn: (data: Flight) => {
       return fetchApi(data);
     },
-    onSuccess: () => {
+    /*onSuccess: () => {
       // Invalidate and refetch
       queryClient.invalidateQueries({ queryKey: ['get-flights'] });
-    },
+    },*/
     onSettled: () =>
       queryClient.invalidateQueries({ queryKey: ['get-flights'] }),
     mutationKey: ['get-flights'],

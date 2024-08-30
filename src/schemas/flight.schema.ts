@@ -1,7 +1,7 @@
 import { z } from 'zod';
 
 // Define el esquema de validación con Zod
-const FlightDataSchema = z.object({
+export const FlightDataSchema = z.object({
   price: z.number().positive().min(0, 'Price must be positive'),
   flight_number: z.string().min(1, 'Flight number is required'),
   departure_place: z.string().min(1, 'Departure place is required'),
@@ -16,4 +16,4 @@ const FlightDataSchema = z.object({
   luggage: z.number().int().min(0, 'Luggage cannot be less than 0'),
 });
 
-export type FlightType = z.infer<typeof FlightDataSchema>;
+export type FlightFormData = z.infer<typeof FlightDataSchema>;

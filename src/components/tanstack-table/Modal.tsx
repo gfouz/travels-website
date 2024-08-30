@@ -1,3 +1,4 @@
+import React from 'react'
 import {
   Modal,
   ModalContent,
@@ -22,7 +23,10 @@ export default function NextModal({ payload }: IModal) {
   const dispatch = useFlightStore((state) => state.dispatch);
 
   const { flight } = useFlightStore((state) => state);
-  console.log(flight);
+
+  React.useEffect(()=>{
+    console.log(flight)
+  }, [flight])
 
   return (
     <>
