@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import SidebarLinkGroup from './SidebarLinkGroup';
 import SettingIcon from './SettingIcon.tsx';
+import PlaneIcon from './PlaneIcon.tsx';
 
 interface SidebarProps {
   sidebarOpen: boolean;
@@ -202,7 +203,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                     'bg-graydark dark:bg-meta-4'
                   }`}
                 >
-                  <SettingIcon />
+                  <PlaneIcon />
                   Vuelos
                 </NavLink>
               </li>

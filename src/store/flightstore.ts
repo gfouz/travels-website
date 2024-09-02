@@ -10,7 +10,8 @@ const reducer = (state: FlightStore, action: FlightAction) => {
 };
 
 export const initialState = {
-  flight_id: undefined,
+  id: undefined,
+  price: undefined,
   flight_number: undefined,
   departure_place: undefined,
   arrival_place: undefined,

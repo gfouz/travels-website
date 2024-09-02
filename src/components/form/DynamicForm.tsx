@@ -9,30 +9,44 @@ interface DynamicFormProps<T extends FieldValues> {
   onSubmit: SubmitHandler<T>;
 }
 
-const DynamicForm = <T extends FieldValues,>({ fields, schema, onSubmit }: DynamicFormProps<T>) => {
-  const { register, handleSubmit, formState: { errors } } = useForm<T>({
+const DynamicForm = <T extends FieldValues>({
+  fields,
+  schema,
+  onSubmit,
+}: DynamicFormProps<T>) => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<T>({
     resolver: zodResolver(schema),
   });
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="max-w-md mx-auto p-4 bg-white rounded shadow-md">
-      <h2 className="text-xl font-bold mb-4">Formulario Dinámico</h2>
-      
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className='max-w-md mx-auto p-4 bg-white rounded shadow-md'
+    >
+      <h2 className='text-xl font-bold mb-4'>Formulario Dinámico</h2>
+
       {fields.map((field) => (
-        <div className="mb-4" key={field.name as string}>
-          <label className="block mb-2">{field.label}</label>
+        <div className='mb-4' key={field.name as string}>
+          <label className='block mb-2'>{field.label}</label>
           <input
             type={field.type}
             {...register(field.name)}
-            className="w-full p-2 border border-gray-300 rounded"
+            className='w-full p-2 border border-gray-300 rounded'
           />
           {errors[field.name] && (
-            <p className="text-red-500">{errors[field.name]?.message}</p>
+            <p className='text-red-500'>{errors[field.name]?.message}</p>
           )}
         </div>
       ))}
 
-      <button type="submit" className="w-full p-2 bg-blue-500 text-white rounded hover:bg-blue-600">
+      <button
+        type='submit'
+        className='w-full p-2 bg-blue-500 text-white rounded hover:bg-blue-600'
+      >
         Enviar
       </button>
     </form>
@@ -40,19 +54,3 @@ const DynamicForm = <T extends FieldValues,>({ fields, schema, onSubmit }: Dynam
 };
 
 export default DynamicForm;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

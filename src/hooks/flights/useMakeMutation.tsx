@@ -1,22 +1,25 @@
 import { useMutation, QueryClient } from '@tanstack/react-query';
-import { Flight } from '../../store/flightActions.ts';
+import { Flight, FetchApiType, Method } from '../../flights.types.ts';
 
 const queryClient = new QueryClient();
 
-export const useAcyncMutation = (
-  fetchApi: (arg0: Flight) => Promise<unknown>,
+export const useMakeMutation = (
+  fetchApi: FetchApiType,
+  url: string,
+  method: Method,
+  token?: string,
 ) => {
   const mutation = useMutation({
-    mutationFn: (data: Flight) => {
-      return fetchApi(data);
+    mutationFn: (payload: Flight) => {
+      return fetchApi(payload, url, method, token);
     },
-    /*onSuccess: () => {
+    onSuccess: () => {
       // Invalidate and refetch
       queryClient.invalidateQueries({ queryKey: ['get-flights'] });
-    },*/
+    },
     onSettled: () =>
       queryClient.invalidateQueries({ queryKey: ['get-flights'] }),
-    mutationKey: ['get-flights'],
+    mutationKey: ['create-flight'],
   });
   return { mutation };
 };

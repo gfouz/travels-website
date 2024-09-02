@@ -1,13 +1,16 @@
-export interface Flight {
-  flight_id: undefined | string;
+import { Flight } from '../flights.types';
+
+/* export interface Flight {
+  id: undefined | string;
+  price?: number; 
   flight_number: undefined | string;
   departure_place: undefined | string;
   arrival_place: undefined | string;
   departure_time: undefined | string;
   arrival_time: undefined | string;
   departure_date: undefined | string;
-  luggage: undefined | string;
-}
+  luggage: undefined | number;
+} */
 
 export type FlightAction = {
   type: string;

@@ -1,18 +1,20 @@
-import { FlightType } from '../../schemas/flight.schema.ts';
+import { Flight, Method } from '../../flights.types.ts';
 
-export const createFlightService = async (
-  data: FlightType,
-  token: string | undefined,
+export const createUpdateService = async (
+  payload: Flight,
+  url: string,
+  method: Method,
+  token?: string,
 ) => {
-  const url = 'http://127.0.0.1:8000/api/flights/create-flight';
+  //const url = 'http://127.0.0.1:8000/api/flights/create-flight';
   try {
     const response = await fetch(url, {
-      method: 'POST',
+      method: method,
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify(data),
+      body: JSON.stringify(payload),
     });
 
     if (!response.ok) {

@@ -6,7 +6,9 @@ const Users = lazy(() => import('./users/users.tsx'));
 const Flights = lazy(() => import('./flights/index.tsx'));
 const CreateFlightPage = lazy(() => import('./flights/create-flight.tsx'));
 const UpdateFlightPage = lazy(() => import('./flights/update-flight.tsx'));
-const DuplicateFlightPage = lazy(() => import('./flights/duplicate-flight.tsx'));
+const DuplicateFlightPage = lazy(
+  () => import('./flights/duplicate-flight.tsx'),
+);
 const Tickets = lazy(() => import('./tickets/tickets.tsx'));
 const Checkin = lazy(() => import('./checkin/Checkin.tsx'));
 const Settings = lazy(() => import('./settings/Settings.tsx'));
@@ -43,7 +45,7 @@ export const list = [
     element: <UpdateFlightPage />,
     errorElement: <ErrorPage />,
   },
-   {
+  {
     path: 'flights/duplicate/',
     element: <DuplicateFlightPage />,
     errorElement: <ErrorPage />,
