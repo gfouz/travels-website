@@ -35,3 +35,4 @@ export const FlightDataSchema = z.object({
 
 export type FlightFormData = z.infer<typeof FlightDataSchema>;
 export type timeSchemaFormData = z.infer<typeof timeSchema>;
+

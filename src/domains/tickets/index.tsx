@@ -2,7 +2,8 @@ import Layout from '../layout/DefaultLayout.tsx';
 import TanStackTable from './tanstack-table/TanStackTable.tsx';
 
 
-const Flights = () => {
+const Tickets = () => {
+  
   return (
     <Layout>
       <TanStackTable />
@@ -10,4 +11,4 @@ const Flights = () => {
   );
 };
 
-export default Flights;
+export default Tickets;

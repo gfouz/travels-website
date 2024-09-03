@@ -8,11 +8,11 @@ import {
 } from '@nextui-org/modal';
 import { Button } from '@nextui-org/button';
 import ModalNavButton from './ModalNavButtons.tsx';
-import { Flight } from '../../flights.types.ts';
-import { useFlightStore } from '../../store/flightstore.ts';
+import { Ticket } from '../../../interfaces.types.ts';
+import { useFlightStore } from '../../../store/flightstore.ts';
 
 interface IModal {
-  payload: Flight;
+  payload: Ticket;
 }
 
 export default function NextModal({ payload }: IModal) {

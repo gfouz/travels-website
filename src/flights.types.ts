@@ -1,7 +1,6 @@
 export type Method = 'POST' | 'PUT';
 
 
-
 export interface Flight {
   id?: string;
   price?: number | string;
@@ -15,9 +14,13 @@ export interface Flight {
 }
 
 
+
+
 export type FetchApiType = (
   payload: Flight,
   url: string,
   method: Method,
   token?: string,
 ) => Promise<any>;
+
+

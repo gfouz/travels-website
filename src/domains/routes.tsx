@@ -9,7 +9,7 @@ const UpdateFlightPage = lazy(() => import('./flights/update-flight.tsx'));
 const DuplicateFlightPage = lazy(
   () => import('./flights/duplicate-flight.tsx'),
 );
-const Tickets = lazy(() => import('./tickets/tickets.tsx'));
+const Tickets = lazy(() => import('./tickets/index.tsx'));
 const Checkin = lazy(() => import('./checkin/Checkin.tsx'));
 const Settings = lazy(() => import('./settings/Settings.tsx'));
 const Dashboard = lazy(() => import('./dashboard.tsx'));

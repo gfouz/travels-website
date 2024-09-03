@@ -8,8 +8,8 @@ import {
 } from '@nextui-org/modal';
 import { Button } from '@nextui-org/button';
 import ModalNavButton from './ModalNavButtons.tsx';
-import { Flight } from '../../flights.types.ts';
-import { useFlightStore } from '../../store/flightstore.ts';
+import { Flight } from '../../../flights.types.ts';
+import { useFlightStore } from '../../../store/flightstore.ts';
 
 interface IModal {
   payload: Flight;
@@ -21,10 +21,7 @@ export default function NextModal({ payload }: IModal) {
   const dispatch = useFlightStore((state) => state.dispatch);
 
   const { flight } = useFlightStore((state) => state);
-  /*React.useEffect(() => {
-    console.log(flight);
-  }, [flight]);*/
-
+ 
   return (
     <>
       <div className='flex justify-center flex-wrap gap-3'>
