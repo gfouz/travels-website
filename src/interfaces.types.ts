@@ -1,6 +1,4 @@
-
 export type Method = 'POST' | 'PUT';
-
 
 export interface Flight {
   id?: string;
@@ -21,14 +19,13 @@ export type FetchApiType = (
   token?: string,
 ) => Promise<any>;
 
-
 // ------------------Ticket interfaces-------------------
 export type Ticket = {
   airline: string;
   price: number | string;
-  description: string; 
+  description: string;
   last_reservation_date: string;
-}
+};
 
 export type TicketFetchFunction = (
   payload: Ticket,
@@ -39,4 +36,4 @@ export type TicketFetchFunction = (
 
 //--------------commom types------------------------//
 
-export type GetListFunction = (url: string)=> Promise<Flight[] | Ticket[]>
+export type GetListFunction = (url: string) => Promise<Flight[] | Ticket[]>;

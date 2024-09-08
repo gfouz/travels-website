@@ -69,11 +69,9 @@ export const actions: Actions = {
 
 //---------------UserStore------------------------------------
 
-type UndefinedOrString = undefined | string;
-
 export interface User {
-  user_id: UndefinedOrString;
-  token: UndefinedOrString;
+  id?: string;
+  token?: string;
 }
 
 export type UserAction = {

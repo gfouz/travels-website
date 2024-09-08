@@ -1,8 +1,8 @@
 import { lazy } from 'react';
 const Root = lazy(() => import('./root'));
-const RegisterPage = lazy(() => import('./users/register'));
-const LoginPage = lazy(() => import('./users/login'));
-const Users = lazy(() => import('./users/users.tsx'));
+const CreateUserPage = lazy(() => import('./users/create-user.tsx'));
+const SignInPage = lazy(() => import('./users/signin-user'));
+const Users = lazy(() => import('./users/index.tsx'));
 const Flights = lazy(() => import('./flights/index.tsx'));
 const CreateFlightPage = lazy(() => import('./flights/create-flight.tsx'));
 const UpdateFlightPage = lazy(() => import('./flights/update-flight.tsx'));
@@ -10,7 +10,9 @@ const DuplicateFlightPage = lazy(
   () => import('./flights/duplicate-flight.tsx'),
 );
 const Tickets = lazy(() => import('./tickets/index.tsx'));
-const Checkin = lazy(() => import('./checkin/Checkin.tsx'));
+const CreateTicketPage = lazy(() => import('./tickets/create-ticket.tsx'));
+const UpdateTicketPage = lazy(() => import('./tickets/update-ticket.tsx'));
+const Checkins = lazy(() => import('./checkins/index.tsx'));
 const Settings = lazy(() => import('./settings/Settings.tsx'));
 const Dashboard = lazy(() => import('./dashboard.tsx'));
 const ErrorPage = lazy(() => import('./error-page.tsx'));
@@ -22,12 +24,12 @@ export const list = [
     errorElement: <ErrorPage />,
   },
   {
-    path: 'register/',
-    element: <RegisterPage />,
+    path: 'users/create',
+    element: <CreateUserPage />,
   },
   {
-    path: 'login/',
-    element: <LoginPage />,
+    path: '/signin',
+    element: <SignInPage />,
     errorElement: <ErrorPage />,
   },
   {
@@ -56,8 +58,18 @@ export const list = [
     errorElement: <ErrorPage />,
   },
   {
+    path: 'tickets/create',
+    element: <CreateTicketPage />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: 'tickets/update',
+    element: <UpdateTicketPage />,
+    errorElement: <ErrorPage />,
+  },
+  {
     path: 'checkin/',
-    element: <Checkin />,
+    element: <Checkins />,
     errorElement: <ErrorPage />,
   },
   {
@@ -76,3 +88,6 @@ export const list = [
     errorElement: <ErrorPage />,
   },
 ];
+
+//const UpdateTicketPage = lazy(() => import('./tickets/update-ticket.tsx'));
+

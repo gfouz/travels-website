@@ -1,13 +1,13 @@
-import Layout from './layout/DefaultLayout.tsx';
+import Layout from '../components/layout/Layout.tsx';
 
-//const links = ['/', '/login', '/register'];
+const dashboardlinks = ['/', '/flights', '/checkin', '/tickets', '/signin'];
 
 const Root = () => {
   return (
-    <Layout>
-      <section className='flex justify-center pt-25'>
-        <h1 className='font-extrabold text-[5vw]'>DASHBOARD</h1>
-      </section>
+    <Layout links={dashboardlinks}>
+      <main className='p-28 flex items-center justify-center'>
+        <h1 className='text-[8vw]'>Homepage</h1>
+      </main>
     </Layout>
   );
 };

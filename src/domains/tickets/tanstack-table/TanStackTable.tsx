@@ -1,4 +1,4 @@
-import {useState, useMemo} from 'react';
+import { useState, useMemo } from 'react';
 
 import {
   ColumnDef,
@@ -12,9 +12,9 @@ import {
   useReactTable,
 } from '@tanstack/react-table';
 
-import { columnsProperties  } from './Columns.tsx';
+import { columnsProperties } from './Columns.tsx';
 import Filter from './Filter.tsx'; //---------Filter-------//
-import { getListService } from '../../../services/getListService.ts'
+import { getListService } from '../../../services/getListService.ts';
 import { useGetListQuery } from '../../../hooks/useGetListQuery.tsx';
 
 const url = 'http://127.0.0.1:8000/api/tickets/get-tickets';
@@ -27,15 +27,10 @@ declare module '@tanstack/react-table' {
 }
 
 export default function TanStackTable() {
-  const { payload }= useGetListQuery(getListService, url, ['get-tickets'])
-  const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>(
-    [],
-  );
+  const { payload } = useGetListQuery(getListService, url, ['get-tickets']);
+  const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
 
-  const columns = useMemo<ColumnDef<any, any>[]>(
-    () => columnsProperties,
-    [],
-  );
+  const columns = useMemo<ColumnDef<any, any>[]>(() => columnsProperties, []);
 
   const table = useReactTable({
     data: payload || [],

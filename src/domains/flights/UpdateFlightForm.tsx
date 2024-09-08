@@ -17,15 +17,15 @@ const UpdateFlightForm = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FlightFormData>( {
+  } = useForm<FlightFormData>({
     resolver: zodResolver(FlightDataSchema),
-  } );
+  });
 
   //Global store hooks
   const user = useUserStore((state) => state.user);
   const { flight } = useFlightStore((state) => state);
   //--------------------------------------------------
-  
+
   const { mutation } = useMakeMutation(
     createUpdateService,
     `http://127.0.0.1:8000/api/flights/update-flight/${flight?.id}`,
@@ -64,7 +64,7 @@ const UpdateFlightForm = () => {
                 variant='underlined'
                 labelPlacement='outside'
                 {...register('price')}
-                defaultValue ={flight?.price?.toString() }
+                defaultValue={flight?.price?.toString()}
                 classNames={{ label: '!text-gray-800' }}
                 isInvalid={errors.price?.message ? true : false}
                 errorMessage={`${errors.price?.message}`}

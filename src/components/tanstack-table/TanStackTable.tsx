@@ -14,7 +14,7 @@ import {
   useReactTable,
 } from '@tanstack/react-table';
 
-import { columnsProperties  } from './Columns.tsx';
+import { columnsProperties } from './Columns.tsx';
 import Filter from './Filter.tsx'; //---------Filter-------//
 
 declare module '@tanstack/react-table' {

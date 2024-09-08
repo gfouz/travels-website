@@ -3,9 +3,9 @@ import { Flight } from '../../flights.types.ts';
 
 type OriginalI = {
   original: Flight;
-}
+};
 
-interface IRow  {
+interface IRow {
   row: OriginalI;
 }
 

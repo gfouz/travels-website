@@ -11,9 +11,9 @@ import {
   useReactTable,
 } from '@tanstack/react-table';
 
-import { columnsProperties  } from './Columns.tsx';
+import { columnsProperties } from './Columns.tsx';
 import Filter from './Filter.tsx'; //---------Filter-------//
-import { getListService } from '../../../services/getListService.ts'
+import { getListService } from '../../../services/getListService.ts';
 import { useGetListQuery } from '../../../hooks/useGetListQuery.tsx';
 
 declare module '@tanstack/react-table' {
@@ -26,16 +26,11 @@ const url = 'http://127.0.0.1:8000/api/flights/get-flights';
 
 export default function TanStackTable() {
   //const { flights } = useGetFlightsQuery();
-  const { payload }= useGetListQuery(getListService, url, ['get-flights'])
+  const { payload } = useGetListQuery(getListService, url, ['get-flights']);
 
-  const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>(
-    [],
-  );
+  const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
 
-  const columns = useMemo<ColumnDef<any, any>[]>(
-    () => columnsProperties,
-    [],
-  );
+  const columns = useMemo<ColumnDef<any, any>[]>(() => columnsProperties, []);
 
   const table = useReactTable({
     data: payload || [],
@@ -103,13 +98,13 @@ export default function TanStackTable() {
           {table.getRowModel().rows.map((row) => {
             return (
               <tr
-                className='pointer border border-b border-[#eee]'
+                className='border border-b border-[#eee] cursor-pointer'
                 key={row.original.id}
               >
                 {row.getVisibleCells().map((cell) => {
                   return (
                     <td
-                      className='text-xs w-[40px] border border-b border-[#eee] p-2 dark:border-strokedark'
+                      className=' text-xs w-[40px] border border-b border-[#eee] p-2 dark:border-strokedark'
                       key={cell.id}
                     >
                       {flexRender(

@@ -10,7 +10,7 @@ const reducer = (state: UserStore, action: UserAction) => {
 };
 
 export const initialState = {
-  user_id: undefined,
+  id: undefined,
   token: undefined,
 };
 //Redux-like patterns store

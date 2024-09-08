@@ -43,7 +43,7 @@ export default function NextModal({ payload }: IModal) {
       </div>
       <Modal backdrop='blur' isOpen={isOpen} onClose={onClose}>
         <ModalContent>
-          { () => (
+          {() => (
             <>
               <ModalHeader className='flex flex-col gap-1'>
                 Administrar Vuelos

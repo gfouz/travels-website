@@ -5,7 +5,7 @@
   return posts;
 };*/
 
-export const getListService = async ( url: string ) => {
+export const getListService = async (url: string) => {
   try {
     const requestOptions = {
       method: 'GET',

@@ -19,14 +19,13 @@ const DuplicateFlightForm = () => {
     formState: { errors },
   } = useForm<FlightFormData>({
     resolver: zodResolver(FlightDataSchema),
-  } );
+  });
 
   //Global store hooks
   const user = useUserStore((state) => state.user);
   const { flight } = useFlightStore((state) => state);
   //--------------------------------------------------
 
-  
   const { mutation } = useMakeMutation(
     createUpdateService,
     url.create_flight,

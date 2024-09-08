@@ -16,9 +16,9 @@ const CreateFlightForm = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FlightFormData>( {
+  } = useForm<FlightFormData>({
     resolver: zodResolver(FlightDataSchema),
-  } );
+  });
   const user = useUserStore((state) => state.user);
   const { mutation } = useMakeMutation(
     createUpdateService,
@@ -50,20 +50,6 @@ const CreateFlightForm = () => {
           Crear Vuelo
         </h2>
         <form className='' onSubmit={handleSubmit(onSubmit)}>
-          <div className='my-8'>
-            <div className='w-full mb-5'>
-              <Input
-                type='number'
-                label='Precio'
-                variant='underlined'
-                labelPlacement='outside'
-                {...register('price')}
-                classNames={{ label: '!text-gray-800' }}
-                isInvalid={errors.price?.message ? true : false}
-                errorMessage={`${errors.price?.message}`}
-              />
-            </div>
-          </div>
 
           <div className='py-4'>
             <div className='w-full'>
@@ -183,7 +169,7 @@ const CreateFlightForm = () => {
 
           <div className='w-full flex py-10'>
             <Button color='primary' type='submit' className='px-10'>
-              Submit
+              {mutation.isPending ? 'Loading...' : 'Submit'}
             </Button>
             <Button color='default' className='px-10 ml-6'>
               Cancel

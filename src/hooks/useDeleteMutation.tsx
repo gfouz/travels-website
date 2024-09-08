@@ -1,13 +1,14 @@
 import { useMutation, QueryClient } from '@tanstack/react-query';
+import { DeleteFunction } from './hooks.type';
 
 const queryClient = new QueryClient();
 
-export type FetchFunction = (url: string, token?: string) => Promise<any>;
-
 export const useDeleteMutation = (
-  fetchApi: FetchFunction,
+  fetchApi: DeleteFunction,
   url: string,
-  token?: string
+  queryKey: string[],
+  mutationKey: string[],
+  token?: string,
 ) => {
   const mutation = useMutation({
     mutationFn: () => {
@@ -15,15 +16,20 @@ export const useDeleteMutation = (
     },
     onSuccess: () => {
       // Invalidate and refetch
-      queryClient.invalidateQueries({ queryKey: ['get-flights'] });
+      queryClient.invalidateQueries({ queryKey: queryKey });
     },
-    onSettled: () =>
-      queryClient.invalidateQueries({ queryKey: ['get-flights'] }),
-    mutationKey: ['create-flight'],
+    onSettled: () => queryClient.invalidateQueries({ queryKey: queryKey }),
+    mutationKey: mutationKey,
     onError: (error) => {
       //console.error('Error al eliminar el registro:', error);
       return error;
     },
+    onSuccess: () => {
+      // Invalidate and refetch
+      queryClient.invalidateQueries({ queryKey: queryKey });
+    },
+    onSettled: () => queryClient.invalidateQueries({ queryKey: queryKey }),
+    mutationKey: mutationKey,
   });
   return { mutation };
 };
