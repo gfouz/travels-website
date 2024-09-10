@@ -11,20 +11,20 @@ interface IRow {
 
 export const columnsProperties = [
   {
-    accessorKey: 'airline', // Clave de acceso de datos
-    header: 'Aerolínea', // Encabezado de la columna
+    accessorKey: 'first_name', // Clave de acceso de datos
+    header: 'Nombre', // Encabezado de la columna
+  },
+  {
+    accessorKey: 'last_name',
+    header: 'Apellido',
+  },
+  {
+    accessorKey: 'passport',
+    header: 'Pasaporte',
   },
   {
     accessorKey: 'status',
-    header: 'estado',
-  },
-  {
-    accessorKey: 'flights.departure_place',
-    header: 'Desde',
-  },
-  {
-    accessorKey: 'flights.arrival_place',
-    header: 'Hasta',
+    header: 'Estado',
   },
   {
     accessorKey: 'actions', // Puedes usar un accessor que no exista en los datos, solo para la presentación

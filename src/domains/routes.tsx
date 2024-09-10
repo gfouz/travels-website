@@ -13,6 +13,8 @@ const Tickets = lazy(() => import('./tickets/index.tsx'));
 const CreateTicketPage = lazy(() => import('./tickets/create-ticket.tsx'));
 const UpdateTicketPage = lazy(() => import('./tickets/update-ticket.tsx'));
 const Checkins = lazy(() => import('./checkins/index.tsx'));
+const CreateCheckinPage = lazy(() => import('./checkins/create-checkin.tsx'));
+
 const Settings = lazy(() => import('./settings/Settings.tsx'));
 const Dashboard = lazy(() => import('./dashboard.tsx'));
 const ErrorPage = lazy(() => import('./error-page.tsx'));
@@ -68,8 +70,13 @@ export const list = [
     errorElement: <ErrorPage />,
   },
   {
-    path: 'checkin/',
+    path: 'checkins/',
     element: <Checkins />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: 'checkins/create',
+    element: <CreateCheckinPage />,
     errorElement: <ErrorPage />,
   },
   {

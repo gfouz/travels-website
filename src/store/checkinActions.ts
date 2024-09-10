@@ -32,7 +32,7 @@ export const CHECKIN_ACTION_TYPES: CheckinActionInterface = {
   SET_CHECKIN: 'SET_CHECKIN',
 };
 
-export const checkinActions: CheckinActions = {
+export const checkinactions: CheckinActions = {
   [CHECKIN_ACTION_TYPES.SET_CHECKIN]: (
     state: CheckinStore,
     action: CheckinAction,

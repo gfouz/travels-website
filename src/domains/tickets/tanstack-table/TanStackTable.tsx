@@ -31,7 +31,7 @@ export default function TanStackTable() {
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
 
   const columns = useMemo<ColumnDef<any, any>[]>(() => columnsProperties, []);
-
+  
   const table = useReactTable({
     data: payload || [],
     columns,

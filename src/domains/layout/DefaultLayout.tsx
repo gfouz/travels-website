@@ -2,7 +2,12 @@ import React, { useState, ReactNode } from 'react';
 import Header from './Header/index';
 import Sidebar from './Sidebar/index';
 
-const DefaultLayout: React.FC<{ children: ReactNode }> = ({ children }) => {
+type LayoutProps = {
+  model: string;
+  children: ReactNode;
+}
+
+const DefaultLayout: React.FC<LayoutProps> = ({ children, model }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
@@ -10,7 +15,7 @@ const DefaultLayout: React.FC<{ children: ReactNode }> = ({ children }) => {
       {/* <!-- ===== Page Wrapper Start ===== --> */}
       <div className='flex h-screen overflow-hidden'>
         {/* <!-- ===== Sidebar Start ===== --> */}
-        <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
+        <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} model={model} />
         {/* <!-- ===== Sidebar End ===== --> */}
 
         {/* <!-- ===== Content Area Start ===== --> */}

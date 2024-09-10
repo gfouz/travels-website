@@ -32,7 +32,7 @@ export default function ModalNavButton({ ticket_id }: { ticket_id?: string }) {
       </div>
       <Button
         showAnchorIcon
-        href='checkin/create/'
+        href='checkins/create/'
         as={Link}
         size='sm'
         color='warning'

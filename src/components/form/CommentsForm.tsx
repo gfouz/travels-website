@@ -29,7 +29,7 @@ const CommentsForm = ({ styles }: CommentsFormProps) => {
     await mutation.mutateAsync(data);
   };
   return (
-    <section className={`rounded-lg rounded-t-lg ${styles}`}>
+    <section className={`rounded-lg rounded-t-lg bg-slate-900`}>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className='p-8 mx-auto max-w-screen-xl lg:py-16 lg:px-6'>
           <div className='mx-auto max-w-screen-md  sm:text-center'>

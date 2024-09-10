@@ -19,11 +19,11 @@ export const columnsProperties = [
     header: 'estado',
   },
   {
-    accessorKey: 'flights.departure_place',
+    accessorKey: 'flight.departure_place',
     header: 'Desde',
   },
   {
-    accessorKey: 'flights.arrival_place',
+    accessorKey: 'flight.arrival_place',
     header: 'Hasta',
   },
   {

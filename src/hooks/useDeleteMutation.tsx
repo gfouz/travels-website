@@ -14,12 +14,7 @@ export const useDeleteMutation = (
     mutationFn: () => {
       return fetchApi(url, token);
     },
-    onSuccess: () => {
-      // Invalidate and refetch
-      queryClient.invalidateQueries({ queryKey: queryKey });
-    },
-    onSettled: () => queryClient.invalidateQueries({ queryKey: queryKey }),
-    mutationKey: mutationKey,
+   
     onError: (error) => {
       //console.error('Error al eliminar el registro:', error);
       return error;

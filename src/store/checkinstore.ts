@@ -5,22 +5,21 @@ import { persist, createJSONStorage } from 'zustand/middleware';
 import { checkinactions, CheckinAction, CheckinStore } from './checkinActions.ts';
 
 const reducer = (state: CheckinStore, action: CheckinAction) => {
+
   const { type } = action;
+
   const currentAction = checkinactions[type];
   return currentAction ? currentAction(state, action) : state;
 };
 
 export const initialState = {
-  id: undefined,
-  price: undefined,
-  checkin_number: undefined,
-  departure_place: undefined,
-  arrival_place: undefined,
-  departure_time: undefined,
-  arrival_time: undefined,
-  departure_date: undefined,
-  luggage: undefined,
-};
+  status: undefined,
+  first_name: undefined,
+  last_name: undefined,
+  passport: undefined, 
+  ticket: undefined,
+  reservation_code: undefined
+}
 //Redux-like patterns store
 const checkinState = persist<CheckinStore>(
   (set) => ({
@@ -38,6 +37,10 @@ export const useCheckinStore = create(checkinState);
 
 import {useCheckinStore} from 'checkinstore'
 const checkin = useCheckinStore(state => state.checkin)
+
+Or destructure the state:
+const { checkin, dispatch } = useCheckinStore(state => state)
+
 const dispatch = useCheckinStore((state) => state.dispatch)
 dispatch({type:'SET_CHECKIN', payload: checkin}) 
 */

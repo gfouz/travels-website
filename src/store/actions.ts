@@ -1,71 +1,43 @@
-export interface Post {
-  id: string;
-  title: string;
-  content: string;
-  slug: string;
-  author: { username: string };
-  created_at: string;
+export interface Model {
+   name?: string;
 }
 
 export type Action = {
   type: string;
-  payload: Post;
+  payload: Model;
 };
-export interface PostStore {
-  post: Post;
+export interface ModelStore {
+  model?: Model;
   dispatch: (action: Action) => void;
 }
 
 interface Actions {
   [x: string]: (
-    state: PostStore,
+    state: ModelStore,
     action: Action,
   ) => {
-    post: Post;
+    model?: Model;
     dispatch: (action: Action) => void;
   };
 }
 export interface ActionTypes {
-  SET_POST: string;
-  SET_TITLE: string;
-  SET_CONTENT: string;
+  SET_MODEL: string;
+  
 }
 export const ACTION_TYPES: ActionTypes = {
-  SET_POST: 'SET_POST',
-  SET_TITLE: 'SET_TITLE',
-  SET_CONTENT: 'SET_CONTENT',
+  SET_MODEL: 'SET_MODEL',
 };
 export const actions: Actions = {
-  [ACTION_TYPES.SET_POST]: (state: PostStore, action: Action) => {
-    const post = { ...action.payload };
+  [ACTION_TYPES.SET_MODEL]: (state: ModelStore, action: Action) => {
+    const model = { ...action.payload };
     const newState = {
       ...state,
-      post,
+         model,
     };
     return newState;
   },
-  [ACTION_TYPES.SET_TITLE]: (state: PostStore, action: Action) => {
-    const post = { ...state.post, title: action.payload.title };
-    const newState = {
-      ...state,
-      post,
-    };
-    return newState;
-  },
-
-  [ACTION_TYPES.SET_CONTENT]: (state: PostStore, action: Action) => {
-    const post = {
-      ...state.post,
-      content: action.payload.content,
-    };
-    const newState = {
-      ...state,
-      post,
-    };
-
-    return newState;
-  },
-};
+  
+  }
 
 //---------------UserStore------------------------------------
 
