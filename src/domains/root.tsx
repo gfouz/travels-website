@@ -15,18 +15,11 @@ const Root = () => {
           <section className='absolute top-0 flex px-8 justify-center left-0 w-full h-full'>
             <a
               href='https://github.com/gfouz'
-              className='flex flex-col items-center justify-center'
+              className='w-full flex flex-col pt-20'
             >
-              <h2 className='text-[8vw] uppercase text-white font-extrabold white-text-shadow'>
+              <h2 className='text-[7vw] sr-only uppercase text-white font-extrabold white-text-shadow'>
                 travels
               </h2>
-              
-              <div className='mt-6'>
-                <p className='text-gray-200 font-extrabold tracking-tight text-[2.7vw]'>
-                  Welcome Passengers!
-                </p>
-              </div>
-              
             </a>
             
           </section>

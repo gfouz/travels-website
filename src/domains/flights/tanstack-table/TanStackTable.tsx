@@ -24,7 +24,7 @@ declare module '@tanstack/react-table' {
 }
 const url = 'http://127.0.0.1:8000/api/flights/get-flights';
 
-export default function TanStackTable({ setModel }:{setModel: React.Dispatch<React.SetStateAction<string>>}) {
+export default function TanStackTable() {
   //const { flights } = useGetFlightsQuery();
   const { payload } = useGetListQuery(getListService, url, ['get-flights']);
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
@@ -44,9 +44,7 @@ export default function TanStackTable({ setModel }:{setModel: React.Dispatch<Rea
     getSortedRowModel: getSortedRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
   });
- 
-  const model = payload?.find( item => item?.role == 'Vuelos')
-   setModel(model?.role)
+
   return (
     <div className='overflow-x-auto'>
       <table className='w-full table-auto'>

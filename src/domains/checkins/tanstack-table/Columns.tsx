@@ -1,8 +1,8 @@
 import Modal from './Modal.tsx';
-import { Ticket } from '../../../tickets.types.ts';
+import { Checkin } from '../../../checkins.types.ts';
 
 type OriginalI = {
-  original: Ticket;
+  original: Checkin;
 };
 
 interface IRow {

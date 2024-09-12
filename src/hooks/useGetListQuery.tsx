@@ -11,9 +11,6 @@ export const useGetListQuery = (
   >({
     queryKey: [queryKey],
     queryFn: () => queryFunction(url),
-    refetchOnMount: false, // Evita refetch al montar el componente
-    refetchOnWindowFocus: true, // Evita refetch cuando la ventana vuelve al foco
-    staleTime: Infinity,
   });
   const payload = data?.map((item: GenericObject) => item);
   return { payload, error, isError, isPending, refetch };

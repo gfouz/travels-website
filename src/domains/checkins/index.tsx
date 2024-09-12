@@ -3,7 +3,7 @@ import TanStackTable from './tanstack-table/TanStackTable.tsx';
 
 const Checkins = () => {
   return (
-    <Layout>
+    <Layout model='Check-in'>
       <TanStackTable />
     </Layout>
   );

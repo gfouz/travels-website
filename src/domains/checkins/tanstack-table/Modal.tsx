@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   Modal,
   ModalContent,
@@ -9,21 +8,19 @@ import {
 } from '@nextui-org/modal';
 import { Button } from '@nextui-org/button';
 import ModalNavButton from './ModalNavButtons.tsx';
-import { Ticket } from '../../../tickets.types.ts';
-import { useTicketStore } from '../../../store/ticketstore.ts';
+import { Checkin } from '../../../checkins.types.ts';
+import { useCheckinStore } from '../../../store/checkinstore.ts';
 
 interface IModal {
-  payload: Ticket;
+  payload: Checkin;
 }
 
 export default function NextModal({ payload }: IModal) {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const dispatch = useTicketStore((state) => state.dispatch);
-  const { ticket } = useTicketStore((state) => state);
-  React.useEffect(() => {
-    console.log(ticket);
-  }, [ticket]);
+  const dispatch = useCheckinStore((state) => state.dispatch);
+  const { checkin } = useCheckinStore((state) => state);
+ 
 
   return (
     <>
@@ -33,7 +30,7 @@ export default function NextModal({ payload }: IModal) {
           color='danger'
           size='sm'
           onPress={() => {
-            dispatch({ type: 'SET_TICKET', payload: payload });
+            dispatch({ type: 'SET_CHECKIN', payload: payload });
             onOpen();
           }}
           className='capitalize h-[20px]'
@@ -46,10 +43,10 @@ export default function NextModal({ payload }: IModal) {
           {() => (
             <>
               <ModalHeader className='flex flex-col gap-1'>
-                Administrar Pasajes
+                Administrar Check-Ins
               </ModalHeader>
               <ModalBody>
-                <ModalNavButton ticket_id={ticket.id} />
+                <ModalNavButton checkin_id={checkin.id} />
               </ModalBody>
               <ModalFooter></ModalFooter>
             </>

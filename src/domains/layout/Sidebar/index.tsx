@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import SettingIcon from './SettingIcon.tsx';
+import CheckIcon from './CheckIcon.tsx';
+import TicketIcon from './TicketIcon.tsx';
 import SidebarLinkFlightsGroup from './SidebarLinkFlightsGroup.tsx';
-import SidebarLinkDashboardGroup from './SidebarLinkDashboardGroup.tsx';
 import SidebarLinkUsersGroup from './SidebarLinkUsersGroup.tsx';
 
 interface SidebarProps {
@@ -10,7 +11,6 @@ interface SidebarProps {
   sidebarOpen: boolean;
   setSidebarOpen: (arg: boolean) => void;
 }
-
 const Sidebar = ({ sidebarOpen, setSidebarOpen, model }: SidebarProps) => {
 
 
@@ -122,7 +122,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, model }: SidebarProps) => {
                     'bg-graydark dark:bg-meta-4'
                   }`}
                 >
-                  <SettingIcon />
+                  <TicketIcon />
                   Pasajes
                 </NavLink>
               </li>
@@ -134,7 +134,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, model }: SidebarProps) => {
                     'bg-graydark dark:bg-meta-4'
                   }`}
                 >
-                  <SettingIcon />
+                  <CheckIcon />
                   CheckIns
                 </NavLink>
               </li>

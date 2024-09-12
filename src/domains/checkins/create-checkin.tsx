@@ -3,7 +3,7 @@ import CreateCheckinForm from './CreateCheckinForm.tsx';
 
 const CreateCheckinPage = () => {
   return (
-    <Layout>
+    <Layout model='Check-in'>
       <CreateCheckinForm />
     </Layout>
   );

@@ -4,7 +4,7 @@ import TanStackTable from './tanstack-table/TanStackTable.tsx';
 
 const Tickets = () => {
   return (
-    <Layout>
+    <Layout model='Pasajes'>
       <TanStackTable />
     </Layout>
   );

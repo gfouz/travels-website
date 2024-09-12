@@ -1,5 +1,5 @@
 import { useMutation, QueryClient } from '@tanstack/react-query';
-import { DeleteFunction } from './hooks.type';
+import { DeleteFunction } from './hooks.types';
 
 const queryClient = new QueryClient();
 

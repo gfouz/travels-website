@@ -3,7 +3,7 @@ import DuplicateFlightForm from './DuplicateFlightForm.tsx';
 
 const DuplicateFlightPage = () => {
   return (
-    <Layout>
+    <Layout model='Vuelos'>
       <DuplicateFlightForm />
     </Layout>
   );

@@ -1,4 +1,4 @@
-export async function deleteRequest(url: string, token?: string) {
+export const deleteRequest = async (url: string, token?: string) => {
   try {
     const response = await fetch(url, {
       method: 'DELETE',

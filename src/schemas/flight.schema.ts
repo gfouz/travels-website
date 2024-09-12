@@ -8,7 +8,12 @@ const departureDateSchema = z.object({
   year: z.number().min(0),
   month: z.number().min(1).max(12),
   day: z.number().min(1).max(31),
-});
+}).refine(
+    (data) => new Date(`${data.year}-${data.month}-${data.day}`) > new Date(),
+    {
+      message: 'Fecha de vuelo incorrecta',
+    },
+  );
 
 const timeSchema = z.object({
   hour: z.number(),

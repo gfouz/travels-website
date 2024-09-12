@@ -1,9 +1,6 @@
 import { Checkin } from '../checkins.types';
 
 
-
-
-
 export type CheckinAction = {
   type: string;
   payload: Checkin;

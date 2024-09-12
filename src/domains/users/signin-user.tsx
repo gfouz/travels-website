@@ -3,7 +3,7 @@ import SignInForm from './SignInForm.tsx';
 
 const SignInPage = () => {
   return (
-    <Layout>
+    <Layout model='Login'>
       <SignInForm />
     </Layout>
   );

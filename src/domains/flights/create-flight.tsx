@@ -3,7 +3,7 @@ import CreateFlightForm from './CreateFlightForm.tsx';
 
 const CreateFlightPage = () => {
   return (
-    <Layout>
+    <Layout model='Vuelos'>
       <CreateFlightForm />
     </Layout>
   );

@@ -3,7 +3,7 @@ import CreateTicketForm from './CreateTicketForm.tsx';
 
 const CreateTicketPage = () => {
   return (
-    <Layout>
+    <Layout model='Pasajes' >
       <CreateTicketForm />
     </Layout>
   );

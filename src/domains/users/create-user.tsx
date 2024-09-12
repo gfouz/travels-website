@@ -3,7 +3,7 @@ import CreateUserForm from './CreateUserForm.tsx';
 
 const CreateUserPage = () => {
   return (
-    <Layout>
+    <Layout model='Register'>
       <CreateUserForm />
     </Layout>
   );

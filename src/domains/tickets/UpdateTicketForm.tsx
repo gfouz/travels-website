@@ -9,6 +9,8 @@ import { useTicketStore } from '../../store/ticketstore.ts';
 import { TicketFormData, TicketSchema } from '../../schemas/ticket.schema';
 import { useGenericMutation } from '../../hooks/useGenericMutation.tsx';
 import { mutationFunction } from '../../services/mutationFunction.ts';
+import MutationResultMessage from '../shared/MutationResultMessage.tsx';
+
 
 const UpdateTicketForm = () => {
   const {
@@ -40,7 +42,7 @@ const UpdateTicketForm = () => {
       ...data,
       last_reservation_date: _last_reservation_date,
       ticket_issuer_id: user?.id,
-      flight_id: ticket?.flights?.id
+      flight_id: ticket?.flight?.id
     };
     await mutation.mutateAsync(_data);
     console.log(_data);
@@ -103,7 +105,7 @@ const UpdateTicketForm = () => {
                 name='last_reservation_date'
                 control={control}
                 render={({ field }) => (
-                  //@ts-ignore
+                  //@ts-expect-error
                   <DatePicker
                     {...field}
                     label='Fecha límite para reservar'
@@ -131,6 +133,9 @@ const UpdateTicketForm = () => {
             </Button>
           </div>
         </form>
+        <section>
+           <MutationResultMessage mutation={mutation} link='/tickets'/>
+        </section>
       </div>
     </div>
   );

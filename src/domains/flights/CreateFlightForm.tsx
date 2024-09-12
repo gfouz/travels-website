@@ -7,8 +7,10 @@ import { TimeInput } from '@nextui-org/date-input';
 import { formatDate, formatTime, url } from './constants.ts';
 import { useUserStore } from '../../store/userstore.ts';
 import { FlightDataSchema, FlightFormData } from '../../schemas/flight.schema';
-import { createUpdateService } from '../../services/flights/createUpdateService.ts';
-import { useMakeMutation } from '../../hooks/flights/useMakeMutation.tsx';
+import { useGenericMutation } from '../../hooks/useGenericMutation.tsx';
+import { mutationFunction } from '../../services/mutationFunction.ts';
+import MutationResultMessage from '../shared/MutationResultMessage.tsx';
+
 
 const CreateFlightForm = () => {
   const {
@@ -20,10 +22,13 @@ const CreateFlightForm = () => {
     resolver: zodResolver(FlightDataSchema),
   });
   const user = useUserStore((state) => state.user);
-  const { mutation } = useMakeMutation(
-    createUpdateService,
+
+  const { mutation } = useGenericMutation(
+    mutationFunction,
     url.create_flight,
     'POST',
+    ['get-flights'],
+    ['create-flight'],
     user?.token,
   );
 
@@ -50,7 +55,6 @@ const CreateFlightForm = () => {
           Crear Vuelo
         </h2>
         <form className='' onSubmit={handleSubmit(onSubmit)}>
-
           <div className='py-4'>
             <div className='w-full'>
               <Input
@@ -176,6 +180,9 @@ const CreateFlightForm = () => {
             </Button>
           </div>
         </form>
+        <section>
+           <MutationResultMessage mutation={mutation} link='/flights'/>
+        </section>
       </div>
     </div>
   );

@@ -16,11 +16,11 @@ export const columnsProperties = [
   },
   {
     accessorKey: 'departure_place',
-    header: 'Desde',
+    header: 'Origen',
   },
   {
     accessorKey: 'arrival_place',
-    header: 'Hasta',
+    header: 'Destino',
   },
   {
     accessorKey: 'departure_time',

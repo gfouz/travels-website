@@ -5,10 +5,10 @@ import { deleteRequest } from '../../../services/deleteRequest';
 import { useDeleteMutation } from '../../../hooks/useDeleteMutation.tsx';
 import { useUserStore } from '../../../store/userstore.ts';
 
-export default function ModalNavButton({ ticket_id }: { ticket_id?: string }) {
+export default function ModalNavButton({ checkin_id }: { checkin_id?: string }) {
   const [warning, setWarning] = React.useState(false);
 
-  const url = `http://127.0.0.1:8000/api/tickets/delete-ticket/${ticket_id}`;
+  const url = `http://127.0.0.1:8000/api/tickets/delete-checkin/${checkin_id}`;
 
   const user = useUserStore((state) => state.user);
 

@@ -16,7 +16,6 @@ const Checkins = lazy(() => import('./checkins/index.tsx'));
 const CreateCheckinPage = lazy(() => import('./checkins/create-checkin.tsx'));
 
 const Settings = lazy(() => import('./settings/Settings.tsx'));
-const Dashboard = lazy(() => import('./dashboard.tsx'));
 const ErrorPage = lazy(() => import('./error-page.tsx'));
 
 export const list = [
@@ -87,11 +86,6 @@ export const list = [
   {
     path: 'settings/',
     element: <Settings />,
-    errorElement: <ErrorPage />,
-  },
-  {
-    path: 'dashboard/',
-    element: <Dashboard />,
     errorElement: <ErrorPage />,
   },
 ];

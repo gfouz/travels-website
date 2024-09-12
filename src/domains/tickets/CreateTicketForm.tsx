@@ -9,6 +9,7 @@ import { useFlightStore } from '../../store/flightstore.ts';
 import { TicketFormData, TicketSchema } from '../../schemas/ticket.schema';
 import { useGenericMutation } from '../../hooks/useGenericMutation.tsx';
 import { mutationFunction } from '../../services/mutationFunction.ts';
+import MutationResultMessage from '../shared/MutationResultMessage.tsx';
 
 const CreateTicketForm = () => {
   const {
@@ -29,7 +30,7 @@ const CreateTicketForm = () => {
     mutationFunction,
     url,
     'POST',
-    ['none'],
+    ['get-flights'],
     ['create-ticket'],
     user?.token,
   );
@@ -43,9 +44,11 @@ const CreateTicketForm = () => {
       flight_id: flight?.id,
       ticket_issuer_id: user?.id,
     };
-    await mutation.mutateAsync(_data);
     
+    await mutation.mutateAsync(_data);
+    console.log(mutation.failureReason)
   };
+  
   return (
     <div className='flex items-center py-20 justify-center'>
       <div className='p-8  rounded-3xl shadow-lg w-full max-w-md dark:border'>
@@ -66,7 +69,19 @@ const CreateTicketForm = () => {
               />
             </div>
           </div>
-
+          <div className='py-4'>
+          <div className='w-full'>
+          <Input
+                label='Código de reserva'
+                variant='underlined'
+                labelPlacement='outside'
+                {...register('booking_code')}
+                classNames={{ label: '!text-gray-800' }}
+                isInvalid={errors.booking_code?.message ? true : false}
+                errorMessage={`${errors.booking_code?.message}`}
+              />
+            </div>
+          </div>
           <div className='py-4'>
             <div className='w-full'>
               <Input
@@ -102,7 +117,7 @@ const CreateTicketForm = () => {
                 name='last_reservation_date'
                 control={control}
                 render={({ field }) => (
-                  //@ts-ignore
+                  //@ts-expect-error
                   <DatePicker
                     {...field}
                     label='Fecha límite para reservar'
@@ -130,6 +145,9 @@ const CreateTicketForm = () => {
             </Button>
           </div>
         </form>
+        <section>
+           <MutationResultMessage mutation={mutation} link='/tickets'/>
+        </section>
       </div>
     </div>
   );

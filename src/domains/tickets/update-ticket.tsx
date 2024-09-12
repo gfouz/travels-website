@@ -3,7 +3,7 @@ import UpdateTicketForm from './UpdateTicketForm.tsx';
 
 const UpdateTicketPage = () => {
   return (
-    <Layout>
+    <Layout model='Pasajes'>
       <UpdateTicketForm />
     </Layout>
   );

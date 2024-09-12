@@ -3,7 +3,7 @@ import UpdateFlightForm from './UpdateFlightForm.tsx';
 
 const UpdateFlightPage = () => {
   return (
-    <Layout>
+    <Layout model='Vuelos'>
       <UpdateFlightForm />
     </Layout>
   );

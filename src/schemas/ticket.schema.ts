@@ -17,7 +17,8 @@ export const TicketSchema = z.object({
     .string()
     .transform((val) => parseFloat(val))
     .refine((num) => !isNaN(num) && num > 0, 'Price must be a positive number'),
-  description: z.string().optional(),
+  description: z.string(),
+  booking_code:  z.string().min(1, 'Código es requerido'),
   last_reservation_date: lastReservationDateSchema,
 });
 

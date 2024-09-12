@@ -4,6 +4,8 @@ import { Link } from '@nextui-org/link';
 import { deleteRequest } from '../../../services/deleteRequest';
 import { useDeleteMutation } from '../../../hooks/useDeleteMutation.tsx';
 import { useUserStore } from '../../../store/userstore.ts';
+import MutationResultMessage from '../../shared/MutationResultMessage.tsx';
+
 
 export default function ModalNavButton({ flight_id }: { flight_id?: string }) {
   const [warning, setWarning] = React.useState(false);
@@ -11,7 +13,7 @@ export default function ModalNavButton({ flight_id }: { flight_id?: string }) {
 
   const user = useUserStore((state) => state.user);
 
-  const { mutation } = useDeleteMutation(deleteRequest, url, user?.token);
+  const { mutation } = useDeleteMutation(deleteRequest, url,['get-flights'],['delete-flight'], user?.token);
 
   return warning == false ? (
     <>
@@ -46,6 +48,7 @@ export default function ModalNavButton({ flight_id }: { flight_id?: string }) {
       </Button>
     </>
   ) : (
+    <>
     <Button
       size='sm'
       color='danger'
@@ -57,5 +60,7 @@ export default function ModalNavButton({ flight_id }: { flight_id?: string }) {
         Advertencia! Eliminará un registro!
       </span>
     </Button>
+    <MutationResultMessage mutation={mutation} link='/flights'/>
+    </>
   );
 }

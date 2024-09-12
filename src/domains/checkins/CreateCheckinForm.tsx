@@ -1,12 +1,15 @@
+import { Input } from '@nextui-org/input';
 import { Button } from '@nextui-org/button';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Input } from '@nextui-org/input';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import { useUserStore } from '../../store/userstore.ts';
 import { useTicketStore } from '../../store/ticketstore.ts';
-import { CheckinFormData, CheckinSchema } from '../../schemas/checkin.schema.ts';
-import { useGenericMutation } from '../../hooks/useGenericMutation.tsx';
 import { mutationFunction } from '../../services/mutationFunction.ts';
-import { SubmitHandler, useForm } from 'react-hook-form';
+import { useGenericMutation } from '../../hooks/useGenericMutation.tsx';
+import MutationResultMessage from '../shared/MutationResultMessage.tsx';
+import { CheckinFormData, CheckinSchema } from '../../schemas/checkin.schema.ts';
+
+
 
 const CreateCheckinForm = () => {
   const {
@@ -26,7 +29,7 @@ const CreateCheckinForm = () => {
     mutationFunction,
     url,
     'POST',
-    ['none'],
+    ['get-checkins'],
     ['create-checkin'],
     user?.token,
   );
@@ -91,10 +94,10 @@ const CreateCheckinForm = () => {
               <Input
                 label='Código de Reservación'
                 variant='underlined'
-                {...register('reservation_code')}
+                {...register('booking_code')}
                 classNames={{ label: '!text-gray-800' }}
-                isInvalid={errors.reservation_code?.message ? true : false}
-                errorMessage={`${errors.reservation_code?.message}`}
+                isInvalid={errors.booking_code?.message ? true : false}
+                errorMessage={`${errors.booking_code?.message}`}
               />
             </div>
           </div>
@@ -107,6 +110,9 @@ const CreateCheckinForm = () => {
             </Button>
           </div>
         </form>
+        <section>
+           <MutationResultMessage mutation={mutation} link='/checkins'/>
+        </section>
       </div>
     </div>
   );
@@ -114,13 +120,3 @@ const CreateCheckinForm = () => {
 
 export default CreateCheckinForm;
 
-/*
-
-{
-  "hour": 2,
-  "minute": 0,
-  "second": 0,
-  "millisecond": 0
-}
-
-*/

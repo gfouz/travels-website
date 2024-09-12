@@ -11,6 +11,8 @@ import EyeButton from '../../components/buttons/EyeButton';
 import { useUserStore } from '../../store/userstore.ts';
 import CancelButton from '../../components/buttons/CancelButton.tsx';
 import SuccessButton from '../../components/buttons/SuccessButton.tsx';
+import MutationResultMessage from '../shared/MutationResultMessage.tsx';
+
 
 const CreateUserForm = () => {
   const {
@@ -177,12 +179,9 @@ const CreateUserForm = () => {
             )}
           </div>
         </form>
-        {mutation.failureReason ? (
-          <p className='text-rose-500 text-xs tracking-tight font-extrabold'>{`${mutation.failureReason}`}</p>
-        ) : null}
-        {mutation?.isSuccess ? (
-          <p className='text-white'>Authenticated</p>
-        ) : null}
+        <section>
+           <MutationResultMessage mutation={mutation} link='/signin' text='Iniciar sesión'/>
+        </section>
       </div>
     </div>
   );

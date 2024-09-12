@@ -8,8 +8,9 @@ import { formatDate, formatTime } from './constants.ts';
 import { useUserStore } from '../../store/userstore.ts';
 import { useFlightStore } from '../../store/flightstore.ts';
 import { FlightDataSchema, FlightFormData } from '../../schemas/flight.schema';
-import { createUpdateService } from '../../services/flights/createUpdateService.ts';
-import { useMakeMutation } from '../../hooks/flights/useMakeMutation.tsx';
+import { useGenericMutation } from '../../hooks/useGenericMutation.tsx';
+import { mutationFunction } from '../../services/mutationFunction.ts';
+import MutationResultMessage from '../shared/MutationResultMessage.tsx';
 
 const UpdateFlightForm = () => {
   const {
@@ -26,10 +27,12 @@ const UpdateFlightForm = () => {
   const { flight } = useFlightStore((state) => state);
   //--------------------------------------------------
 
-  const { mutation } = useMakeMutation(
-    createUpdateService,
+  const { mutation } = useGenericMutation(
+    mutationFunction,
     `http://127.0.0.1:8000/api/flights/update-flight/${flight?.id}`,
     'PUT',
+    ['get-flights'],
+    ['update-flight'],
     user?.token,
   );
 
@@ -53,25 +56,9 @@ const UpdateFlightForm = () => {
     <div className='flex items-center py-20 justify-center'>
       <div className='p-8  rounded-3xl shadow-lg w-full max-w-md dark:border'>
         <h2 className='text-3xl font-extrabold tracking-tight mb-15 text-center'>
-          Crear Vuelo
+          Editar Vuelo
         </h2>
         <form className='' onSubmit={handleSubmit(onSubmit)}>
-          <div className='my-8'>
-            <div className='w-full mb-5'>
-              <Input
-                type='number'
-                label='Precio'
-                variant='underlined'
-                labelPlacement='outside'
-                {...register('price')}
-                defaultValue={flight?.price?.toString()}
-                classNames={{ label: '!text-gray-800' }}
-                isInvalid={errors.price?.message ? true : false}
-                errorMessage={`${errors.price?.message}`}
-              />
-            </div>
-          </div>
-
           <div className='py-4'>
             <div className='w-full'>
               <Input
@@ -201,6 +188,9 @@ const UpdateFlightForm = () => {
             </Button>
           </div>
         </form>
+        <section>
+           <MutationResultMessage mutation={mutation} link='/flights'/>
+        </section>
       </div>
     </div>
   );

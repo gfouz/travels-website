@@ -15,7 +15,7 @@ const Dropdown = () => {
   };
 
   return (
-    <section className='relative  w-[130px] bg-rose-500 pointer'>
+    <section className='relative  w-[130px] bg-sky-500 pointer'>
       <div
         role='hover-button'
         className='flex flex-col items-center '
@@ -25,7 +25,7 @@ const Dropdown = () => {
         <div className='h-[64px] flex justify-center items-center'>
           <Button
             variant='flat'
-            className='flex w-[100px] justify-center items-center border border-gray-800 rounded-lg bg-rose-500 text-white  capitalize'
+            className='flex w-[100px] justify-center items-center border border-gray-800 rounded-lg bg-sky-500 text-white  capitalize'
           >
             <img
               className='w-[25px] h-auto '
@@ -38,7 +38,7 @@ const Dropdown = () => {
 
         <motion.nav
           role='menu'
-          className={` ${isOpen ? 'open' : 'closed'} bg-rose-500 w-full absolute top-[60px] left-0 rounded-b-xl`}
+          className={` ${isOpen ? 'open' : 'closed'} bg-sky-500 w-full absolute top-[60px] left-0 rounded-b-xl`}
           animate={isOpen ? 'open' : 'closed'}
           variants={variants}
         >
@@ -46,7 +46,7 @@ const Dropdown = () => {
             className={` ${isOpen ? 'open' : 'closed'}  capitalize h-[160px] flex flex-col justify-evenly text-center text-white text-sm`}
           >
             <motion.a
-              className={` ${isOpen ? 'open' : 'closed'} justify-center items-center border-y border-rose-800  hover:bg-rose-400`}
+              className={` ${isOpen ? 'open' : 'closed'} justify-center items-center border-y border-sky-800  hover:bg-sky-400`}
               href='https://github.com/gfouz'
               animate={isOpen ? 'open' : 'closed'}
               variants={variants2}
@@ -55,7 +55,7 @@ const Dropdown = () => {
             </motion.a>
 
             <motion.a
-              className={` ${isOpen ? 'open' : 'closed'} justify-center items-center border-b border-rose-800 hover:bg-rose-400`}
+              className={` ${isOpen ? 'open' : 'closed'} justify-center items-center border-b border-sky-800 hover:bg-sky-400`}
               href='https://www.linkedin.com/in/giovani-fouz-373210258/'
               animate={isOpen ? 'open' : 'closed'}
               variants={variants2}
@@ -64,7 +64,7 @@ const Dropdown = () => {
             </motion.a>
 
             <motion.a
-              className={` ${isOpen ? 'open' : 'closed'} justify-center items-center   hover:bg-rose-400`}
+              className={` ${isOpen ? 'open' : 'closed'} justify-center items-center   hover:bg-sky-400`}
               href='https://dev.to/gfouz'
               animate={isOpen ? 'open' : 'closed'}
               variants={variants2}
