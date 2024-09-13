@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   Modal,
   ModalContent,
@@ -21,9 +20,7 @@ export default function NextModal({ payload }: IModal) {
 
   const dispatch = useTicketStore((state) => state.dispatch);
   const { ticket } = useTicketStore((state) => state);
-  React.useEffect(() => {
-    console.log(ticket);
-  }, [ticket]);
+  
 
   return (
     <>

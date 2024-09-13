@@ -14,10 +14,12 @@ import {
 
 import { columnsProperties } from './Columns.tsx';
 import Filter from './Filter.tsx'; //---------Filter-------//
-import { getListService } from '../../../services/getListService.ts';
-import { useGetListQuery } from '../../../hooks/useGetListQuery.tsx';
+import { GenericObject } from '../../../hooks/hooks.types.ts';
 
-const url = 'http://127.0.0.1:8000/api/tickets/get-tickets';
+type TanStackTableProps = {
+  payload: GenericObject[] | undefined;
+}
+
 
 declare module '@tanstack/react-table' {
   //allows us to define custom properties for our columns
@@ -26,8 +28,7 @@ declare module '@tanstack/react-table' {
   }
 }
 
-export default function TanStackTable() {
-  const { payload } = useGetListQuery(getListService, url, ['get-tickets']);
+export default function TanStackTable({payload}: TanStackTableProps) {
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
 
   const columns = useMemo<ColumnDef<any, any>[]>(() => columnsProperties, []);

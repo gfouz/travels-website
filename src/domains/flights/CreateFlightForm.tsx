@@ -190,13 +190,3 @@ const CreateFlightForm = () => {
 
 export default CreateFlightForm;
 
-/*
-
-{
-  "hour": 2,
-  "minute": 0,
-  "second": 0,
-  "millisecond": 0
-}
-
-*/

@@ -26,9 +26,9 @@ export default function NextModal({ payload }: IModal) {
     <>
       <div className='flex justify-center flex-wrap gap-3'>
         <Button
+          size='md'
           variant='shadow'
           color='danger'
-          size='sm'
           onPress={() => {
             dispatch({ type: 'SET_FLIGHT', payload: payload });
             onOpen();

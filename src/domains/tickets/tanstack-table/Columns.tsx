@@ -19,12 +19,12 @@ export const columnsProperties = [
     header: 'estado',
   },
   {
-    accessorKey: 'flight.departure_place',
-    header: 'Desde',
+    accessorKey: 'price',
+    header: 'Precio',
   },
   {
-    accessorKey: 'flight.arrival_place',
-    header: 'Hasta',
+    accessorKey: 'booking_code',
+    header: 'Código de Reserva',
   },
   {
     accessorKey: 'actions', // Puedes usar un accessor que no exista en los datos, solo para la presentación

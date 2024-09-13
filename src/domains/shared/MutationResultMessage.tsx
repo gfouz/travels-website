@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { UseMutationResult } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
 
@@ -18,7 +19,9 @@ export default function MutationResultMessage({
 }: MutationResult) {
   
   const navigate = useNavigate();
-
+  useEffect(()=>{
+     mutation?.isSuccess && navigate(link)
+  },[mutation?.isSuccess])
   return (
     <>
       {mutation?.failureReason || mutation?.isError ? (
