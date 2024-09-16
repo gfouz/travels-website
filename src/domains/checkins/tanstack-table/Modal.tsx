@@ -20,7 +20,6 @@ export default function NextModal({ payload }: IModal) {
 
   const dispatch = useCheckinStore((state) => state.dispatch);
   const { checkin } = useCheckinStore((state) => state);
- 
 
   return (
     <>

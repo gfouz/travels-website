@@ -1,5 +1,5 @@
 export interface Model {
-   name?: string;
+  name?: string;
 }
 
 export type Action = {
@@ -22,7 +22,6 @@ interface Actions {
 }
 export interface ActionTypes {
   SET_MODEL: string;
-  
 }
 export const ACTION_TYPES: ActionTypes = {
   SET_MODEL: 'SET_MODEL',
@@ -32,12 +31,11 @@ export const actions: Actions = {
     const model = { ...action.payload };
     const newState = {
       ...state,
-         model,
+      model,
     };
     return newState;
   },
-  
-  }
+};
 
 //---------------UserStore------------------------------------
 

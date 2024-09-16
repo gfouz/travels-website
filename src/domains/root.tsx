@@ -1,6 +1,12 @@
 import Layout from '../components/layout/Layout.tsx';
 
-const dashboardlinks = ['/', '/flights', '/checkin', '/tickets', '/signin'];
+const dashboardlinks = [
+  '/',
+  '/flight-schedule',
+  '/checkin',
+  '/tickets',
+  '/signin',
+];
 
 const Root = () => {
   return (
@@ -21,7 +27,6 @@ const Root = () => {
                 travels
               </h2>
             </a>
-            
           </section>
         </section>
       </main>

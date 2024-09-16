@@ -1,14 +1,16 @@
-import Layout from '../layout/DefaultLayout.tsx';
-import TanStackTable from '../tickets/tanstack-table/TanStackTable.tsx';
-import { useLocation } from "react-router-dom";
+import { useLocation } from 'react-router-dom';
 
+import { Ticket } from '../../tickets.types.ts';
+import Layout from '../layout/DefaultLayout.tsx';
+import TanStackTable from './tanstack-flight-tickets/TanStackTable.tsx';
 
 const FlightTickets = () => {
   const location = useLocation();
   const data = location.state;
-  const tickets = data?.tickets.map( item => item);
+  const tickets = data?.tickets.map((item: Ticket) => item);
+
   return (
-    <Layout model='Pasajes por Vuelos' >
+    <Layout model='Pasajes por Vuelo'>
       <TanStackTable payload={tickets} />
     </Layout>
   );

@@ -1,14 +1,16 @@
 import { z } from 'zod';
 
-const departureDateSchema = z.object({
-  calendar: z.object({
-    identifier: z.string(),
-  }),
-  era: z.string(),
-  year: z.number().min(0),
-  month: z.number().min(1).max(12),
-  day: z.number().min(1).max(31),
-}).refine(
+const departureDateSchema = z
+  .object({
+    calendar: z.object({
+      identifier: z.string(),
+    }),
+    era: z.string(),
+    year: z.number().min(0),
+    month: z.number().min(1).max(12),
+    day: z.number().min(1).max(31),
+  })
+  .refine(
     (data) => new Date(`${data.year}-${data.month}-${data.day}`) > new Date(),
     {
       message: 'Fecha de vuelo incorrecta',
@@ -24,7 +26,7 @@ const timeSchema = z.object({
 
 // Define el esquema de validación con Zod
 export const FlightDataSchema = z.object({
- /* price: z
+  /* price: z
     .string()
     .transform((val) => parseFloat(val))
     .refine((num) => !isNaN(num) && num > 0, 'Price must be a positive number'),*/

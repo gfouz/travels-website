@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from '../../components/navbar/NextNavbar.tsx';
 import Footer from '../../components/footer/Footer.tsx';
+import WhatsAppIcon from '../icons/whatsappIcon.tsx';
 
 interface LayoutProps {
   links: string[];
@@ -11,7 +12,10 @@ const defaultlinks = ['/', '/login', '/register'];
 
 const Layout = ({ links = defaultlinks, children }: LayoutProps) => {
   return (
-    <section className='h-full w-full'>
+    <section className='h-full w-full relative'>
+       <span className='fixed top-[80%] right-[5%] z-10'>
+         <WhatsAppIcon color='white' size='60' />
+       </span>
       <header className='sticky top-0 left-0 z-30'>
         <Navbar links={links} />
       </header>

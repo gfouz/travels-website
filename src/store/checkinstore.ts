@@ -1,11 +1,13 @@
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
 
-
-import { checkinactions, CheckinAction, CheckinStore } from './checkinActions.ts';
+import {
+  checkinactions,
+  CheckinAction,
+  CheckinStore,
+} from './checkinActions.ts';
 
 const reducer = (state: CheckinStore, action: CheckinAction) => {
-
   const { type } = action;
 
   const currentAction = checkinactions[type];
@@ -16,10 +18,10 @@ export const initialState = {
   status: undefined,
   first_name: undefined,
   last_name: undefined,
-  passport: undefined, 
+  passport: undefined,
   ticket: undefined,
-  reservation_code: undefined
-}
+  reservation_code: undefined,
+};
 //Redux-like patterns store
 const checkinState = persist<CheckinStore>(
   (set) => ({

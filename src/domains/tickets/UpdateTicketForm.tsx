@@ -11,7 +11,6 @@ import { useGenericMutation } from '../../hooks/useGenericMutation.tsx';
 import { mutationFunction } from '../../services/mutationFunction.ts';
 import MutationResultMessage from '../shared/MutationResultMessage.tsx';
 
-
 const UpdateTicketForm = () => {
   const {
     control,
@@ -37,15 +36,15 @@ const UpdateTicketForm = () => {
   const onSubmit: SubmitHandler<TicketFormData> = async (
     data: TicketFormData,
   ) => {
+    console.log(data);
     const _last_reservation_date = formatDate(data);
     const _data = {
       ...data,
       last_reservation_date: _last_reservation_date,
       ticket_issuer_id: user?.id,
-      flight_id: ticket?.flight?.id
+      flight_id: ticket?.flight?.id,
     };
     await mutation.mutateAsync(_data);
-    console.log(_data);
   };
   return (
     <div className='flex items-center py-20 justify-center'>
@@ -68,7 +67,20 @@ const UpdateTicketForm = () => {
               />
             </div>
           </div>
-
+          <div className='py-4'>
+            <div className='w-full'>
+              <Input
+                label='Código de reserva'
+                variant='underlined'
+                labelPlacement='outside'
+                {...register('booking_code')}
+                defaultValue={ticket?.booking_code}
+                classNames={{ label: '!text-gray-800' }}
+                isInvalid={errors.booking_code?.message ? true : false}
+                errorMessage={`${errors.booking_code?.message}`}
+              />
+            </div>
+          </div>
           <div className='py-4'>
             <div className='w-full'>
               <Input
@@ -134,7 +146,7 @@ const UpdateTicketForm = () => {
           </div>
         </form>
         <section>
-           <MutationResultMessage mutation={mutation} link='/tickets'/>
+          <MutationResultMessage mutation={mutation} link='/tickets' />
         </section>
       </div>
     </div>

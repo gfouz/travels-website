@@ -105,7 +105,11 @@ const SignInForm = () => {
           </div>
         </form>
         <section>
-           <MutationResultMessage mutation={mutation} link='/flights' text='Ver Vuelos'/>
+          <MutationResultMessage
+            mutation={mutation}
+            link='/flights'
+            text='Ver Vuelos'
+          />
         </section>
       </div>
     </div>

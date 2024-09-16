@@ -1,13 +1,9 @@
 import React from 'react';
 import { Button } from '@nextui-org/button';
 import { Link } from '@nextui-org/link';
-import { useNavigate } from 'react-router-dom';
-
 import { deleteRequest } from '../../../services/deleteRequest';
 import { useDeleteMutation } from '../../../hooks/useDeleteMutation.tsx';
 import { useUserStore } from '../../../store/userstore.ts';
-import { useTicketStore } from '../../../store/ticketstore.ts';
-
 
 export default function ModalNavButton({ ticket_id }: { ticket_id?: string }) {
   const [warning, setWarning] = React.useState(false);
@@ -23,24 +19,12 @@ export default function ModalNavButton({ ticket_id }: { ticket_id?: string }) {
     ['delete'],
     user?.token,
   );
-  const { ticket } = useTicketStore((state) => state);
-  const navigate = useNavigate();
-  
-  const handleClick = (data: any) => {
-    navigate("/ticket-details", { state: ticket });
-  };
+
   return warning == false ? (
     <>
       <div className='flex justify-evenly items-center'>
         <Button showAnchorIcon href='tickets/update' as={Link} size='sm'>
           Editar
-        </Button>
-        <Button showAnchorIcon  
-          as={Link} 
-          size='sm'
-          onPress={ ()=>{ handleClick()} }
-        >
-          Ver detalles
         </Button>
         <Button
           onPress={() => {

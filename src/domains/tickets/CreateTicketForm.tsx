@@ -23,7 +23,7 @@ const CreateTicketForm = () => {
   //Global store hooks
   const user = useUserStore((state) => state.user);
   const { flight } = useFlightStore((state) => state);
-  
+
   //--------------------------------------------------
   const url = 'http://127.0.0.1:8000/api/tickets/create-ticket';
   const { mutation } = useGenericMutation(
@@ -44,11 +44,11 @@ const CreateTicketForm = () => {
       flight_id: flight?.id,
       ticket_issuer_id: user?.id,
     };
-    
+
     await mutation.mutateAsync(_data);
-    console.log(mutation.failureReason)
+    console.log(mutation.failureReason);
   };
-  
+
   return (
     <div className='flex items-center py-20 justify-center'>
       <div className='p-8  rounded-3xl shadow-lg w-full max-w-md dark:border'>
@@ -70,8 +70,8 @@ const CreateTicketForm = () => {
             </div>
           </div>
           <div className='py-4'>
-          <div className='w-full'>
-          <Input
+            <div className='w-full'>
+              <Input
                 label='Código de reserva'
                 variant='underlined'
                 labelPlacement='outside'
@@ -146,7 +146,7 @@ const CreateTicketForm = () => {
           </div>
         </form>
         <section>
-           <MutationResultMessage mutation={mutation} link='/tickets'/>
+          <MutationResultMessage mutation={mutation} link='/tickets' />
         </section>
       </div>
     </div>

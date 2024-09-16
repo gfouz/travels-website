@@ -5,7 +5,7 @@ import Sidebar from './Sidebar/index';
 type LayoutProps = {
   model: string;
   children: ReactNode;
-}
+};
 
 const DefaultLayout: React.FC<LayoutProps> = ({ children, model }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -15,7 +15,11 @@ const DefaultLayout: React.FC<LayoutProps> = ({ children, model }) => {
       {/* <!-- ===== Page Wrapper Start ===== --> */}
       <div className='flex h-screen overflow-hidden'>
         {/* <!-- ===== Sidebar Start ===== --> */}
-        <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} model={model} />
+        <Sidebar
+          sidebarOpen={sidebarOpen}
+          setSidebarOpen={setSidebarOpen}
+          model={model}
+        />
         {/* <!-- ===== Sidebar End ===== --> */}
 
         {/* <!-- ===== Content Area Start ===== --> */}

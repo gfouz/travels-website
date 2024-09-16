@@ -29,7 +29,7 @@ const CommentsForm = ({ styles }: CommentsFormProps) => {
     await mutation.mutateAsync(data);
   };
   return (
-    <section className={`rounded-lg rounded-t-lg bg-slate-900`}>
+    <section className={`rounded-lg rounded-t-lg bg-sky-900`}>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className='p-8 mx-auto max-w-screen-xl lg:py-16 lg:px-6'>
           <div className='mx-auto max-w-screen-md  sm:text-center'>
@@ -40,7 +40,7 @@ const CommentsForm = ({ styles }: CommentsFormProps) => {
               <textarea
                 {...register('message')}
                 rows={6}
-                className={`dark:bg-gray-700 dark:placeholder-gray-400 dark:text-white  border border-gray-600 rounded-lg p-2 w-full text-sm text-gray-100  focus:ring-0 placeholder-gray-100 ${styles}`}
+                className={`border border-white bg-sky-900 rounded-lg p-2 w-full text-sm text-gray-100  focus:ring-0 placeholder-gray-100 ${styles}`}
                 placeholder='Write a comment...'
               ></textarea>
             </div>
@@ -52,7 +52,7 @@ const CommentsForm = ({ styles }: CommentsFormProps) => {
             <h2
               className={`mb-4 text-3xl font-extrabold tracking-tight sm:text-4xl ${styles}`}
             >
-              Send a comment
+              Contact us
             </h2>
             <p className='mx-auto mb-8 max-w-2xl  md:mb-12 sm:text-xl '>
               Stay up to date with the latest trends, announcements and

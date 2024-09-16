@@ -13,7 +13,6 @@ import CancelButton from '../../components/buttons/CancelButton.tsx';
 import SuccessButton from '../../components/buttons/SuccessButton.tsx';
 import MutationResultMessage from '../shared/MutationResultMessage.tsx';
 
-
 const CreateUserForm = () => {
   const {
     register,
@@ -180,7 +179,11 @@ const CreateUserForm = () => {
           </div>
         </form>
         <section>
-           <MutationResultMessage mutation={mutation} link='/signin' text='Iniciar sesión'/>
+          <MutationResultMessage
+            mutation={mutation}
+            link='/signin'
+            text='Iniciar sesión'
+          />
         </section>
       </div>
     </div>

@@ -9,7 +9,7 @@ const reducer = (state: ModelStore, action: Action) => {
 };
 
 export const initialModel = {
-     name: '',
+  name: '',
 };
 //Redux-like patterns store
 const modelState = persist<ModelStore>(

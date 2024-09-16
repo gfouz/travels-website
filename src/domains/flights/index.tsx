@@ -3,7 +3,7 @@ import TanStackTable from './tanstack-table/TanStackTable.tsx';
 
 const Flights = () => {
   return (
-    <Layout model='Vuelos' >
+    <Layout model='Vuelos'>
       <TanStackTable />
     </Layout>
   );

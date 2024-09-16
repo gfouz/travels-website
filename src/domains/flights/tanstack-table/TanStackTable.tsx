@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react';
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
 //onClick={ ()=>{ handleClick(row?.original)}}
 
@@ -29,7 +29,6 @@ declare module '@tanstack/react-table' {
 const url = 'http://127.0.0.1:8000/api/flights/get-flights';
 
 export default function TanStackTable() {
-  const navigate = useNavigate();
   const { payload } = useGetListQuery(getListService, url, ['get-flights']);
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
 
@@ -48,10 +47,6 @@ export default function TanStackTable() {
     getSortedRowModel: getSortedRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
   });
-
-  const handleClick = (data: any) => {
-    navigate("/flight-tickets", { state: data });
-  };
 
   return (
     <div className='overflow-x-auto'>
@@ -104,31 +99,24 @@ export default function TanStackTable() {
         <tbody>
           {table.getRowModel().rows.map((row) => {
             return (
-              
               <tr
                 key={row.original?.id}
                 className='border border-b border-[#eee] cursor-pointer '
-                
-                
               >
                 {row.getVisibleCells().map((cell) => {
                   return (
                     <td
                       className=' text-xs w-[40px] border border-b border-[#eee] p-2 dark:border-strokedark'
                       key={cell.id}
-                      
                     >
-                     
                       {flexRender(
                         cell.column.columnDef.cell,
                         cell.getContext(),
                       )}
-                 
                     </td>
                   );
                 })}
               </tr>
-              
             );
           })}
         </tbody>

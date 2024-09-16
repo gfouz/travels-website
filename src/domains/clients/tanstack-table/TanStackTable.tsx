@@ -14,11 +14,8 @@ import {
 
 import { columnsProperties } from './Columns.tsx';
 import Filter from './Filter.tsx'; //---------Filter-------//
-import { GenericObject } from '../../../hooks/hooks.types.ts';
-
-type TanStackTableProps = {
-  payload: GenericObject[] | undefined;
-};
+import { getListService } from '../../../services/getListService.ts';
+import { useGetListQuery } from '../../../hooks/useGetListQuery.tsx';
 
 declare module '@tanstack/react-table' {
   //allows us to define custom properties for our columns
@@ -26,8 +23,10 @@ declare module '@tanstack/react-table' {
     filterVariant?: 'text' | 'range' | 'select';
   }
 }
+const url = 'http://127.0.0.1:8000/api/flights/get-flights';
 
-export default function TanStackTable({ payload }: TanStackTableProps) {
+export default function TanStackTable() {
+  const { payload } = useGetListQuery(getListService, url, ['get-flights']);
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
 
   const columns = useMemo<ColumnDef<any, any>[]>(() => columnsProperties, []);
@@ -51,14 +50,11 @@ export default function TanStackTable({ payload }: TanStackTableProps) {
       <table className='w-full table-auto'>
         <thead>
           {table.getHeaderGroups().map((headerGroup) => (
-            <tr
-              className='bg-gray-2 text-left dark:bg-meta-4'
-              key={headerGroup.id}
-            >
+            <tr className=' text-left dark:bg-meta-4' key={headerGroup.id}>
               {headerGroup.headers.map((header) => {
                 return (
                   <th
-                    className='p-2 w-[40px] text-xs text-black dark:text-white'
+                    className='p-2 w-[40px] text-xs text-white'
                     key={header.id}
                     colSpan={header.colSpan}
                   >
@@ -98,13 +94,13 @@ export default function TanStackTable({ payload }: TanStackTableProps) {
           {table.getRowModel().rows.map((row) => {
             return (
               <tr
-                className='pointer border border-b border-[#eee]'
-                key={row.original.id}
+                key={row.original?.id}
+                className='border border-b border-[#f1f1f140] cursor-pointer '
               >
                 {row.getVisibleCells().map((cell) => {
                   return (
                     <td
-                      className='text-xs w-[40px] border border-b border-[#eee] p-2 dark:border-strokedark'
+                      className=' text-xs text-white w-[40px] border border-b border-[#eee] p-2 dark:border-strokedark'
                       key={cell.id}
                     >
                       {flexRender(
@@ -119,7 +115,7 @@ export default function TanStackTable({ payload }: TanStackTableProps) {
           })}
         </tbody>
       </table>
-      <div className='flex items-center gap-2 py-6 px-2'>
+      <div className='flex items-center gap-2 py-16 px-2'>
         <button
           className='border rounded p-1'
           onClick={() => table.setPageIndex(0)}

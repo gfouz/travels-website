@@ -46,7 +46,7 @@ export default function NextModal({ payload }: IModal) {
                 Administrar Vuelos
               </ModalHeader>
               <ModalBody>
-                <ModalNavButton flight_id={flight.id} />
+                <ModalNavButton flight={flight} />
               </ModalBody>
               <ModalFooter></ModalFooter>
             </>

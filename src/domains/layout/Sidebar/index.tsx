@@ -12,9 +12,6 @@ interface SidebarProps {
   setSidebarOpen: (arg: boolean) => void;
 }
 const Sidebar = ({ sidebarOpen, setSidebarOpen, model }: SidebarProps) => {
-
-
-
   const location = useLocation();
   const { pathname } = location;
 
@@ -60,7 +57,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, model }: SidebarProps) => {
       document.querySelector('body')?.classList.remove('sidebar-expanded');
     }
   }, [sidebarExpanded]);
-  
+
   return (
     <aside
       ref={sidebar}
@@ -71,8 +68,9 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, model }: SidebarProps) => {
       {/* <!-- SIDEBAR HEADER --> */}
       <div className='flex items-center justify-between gap-2 px-6 py-5.5 lg:py-6.5'>
         <NavLink to='/'>
-          <h2 className='text-4xl text-white font-extrabold'>{model ? model : 'Travel'}</h2>
-      
+          <h2 className='text-xl text-white font-extrabold'>
+            {model ? model : 'Travel'}
+          </h2>
         </NavLink>
 
         <button

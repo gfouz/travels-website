@@ -14,7 +14,7 @@ export const useDeleteMutation = (
     mutationFn: () => {
       return fetchApi(url, token);
     },
-   
+
     onError: (error) => {
       //console.error('Error al eliminar el registro:', error);
       return error;

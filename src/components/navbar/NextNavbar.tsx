@@ -22,7 +22,7 @@ export default function Navbar({ links = defaultLinks }: { links: string[] }) {
 
   return (
     <NextUINavbar
-      className='bg-slate-800 opacity-90'
+      className='bg-white opacity-90'
       isBordered
       isMenuOpen={isMenuOpen}
       onMenuOpenChange={setIsMenuOpen}
@@ -53,8 +53,8 @@ export default function Navbar({ links = defaultLinks }: { links: string[] }) {
             <Link
               className={
                 pathname !== link
-                  ? 'capitalize text-white'
-                  : 'capitalize font-black text-yellow-300'
+                  ? 'capitalize text-gray-900'
+                  : 'capitalize font-black text-sky-900'
               }
               to={link}
             >

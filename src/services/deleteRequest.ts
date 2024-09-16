@@ -17,4 +17,4 @@ export const deleteRequest = async (url: string, token?: string) => {
   } catch (error) {
     console.error('Error al eliminar el registro:', error);
   }
-}
+};

@@ -1,14 +1,3 @@
-import Modal from './Modal.tsx';
-import { Flight } from '../../../flights.types.ts';
-
-type OriginalI = {
-  original: Flight;
-};
-
-interface IRow {
-  row: OriginalI;
-}
-
 export const columnsProperties = [
   {
     accessorKey: 'flight_number', // Clave de acceso de datos
@@ -33,13 +22,6 @@ export const columnsProperties = [
   {
     accessorKey: 'departure_date',
     header: 'Fecha de vuelo',
-  },
-  {
-    accessorKey: 'actions', // Puedes usar un accessor que no exista en los datos, solo para la presentación
-    header: 'Actions', // Título de la columna
-    cell: ({ row }: IRow) => (
-      <Modal className='overlap-max' payload={row.original} />
-    ),
   },
 ];
 

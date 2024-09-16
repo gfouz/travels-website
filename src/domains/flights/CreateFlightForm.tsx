@@ -11,7 +11,6 @@ import { useGenericMutation } from '../../hooks/useGenericMutation.tsx';
 import { mutationFunction } from '../../services/mutationFunction.ts';
 import MutationResultMessage from '../shared/MutationResultMessage.tsx';
 
-
 const CreateFlightForm = () => {
   const {
     control,
@@ -181,7 +180,7 @@ const CreateFlightForm = () => {
           </div>
         </form>
         <section>
-           <MutationResultMessage mutation={mutation} link='/flights'/>
+          <MutationResultMessage mutation={mutation} link='/flights' />
         </section>
       </div>
     </div>
@@ -189,4 +188,3 @@ const CreateFlightForm = () => {
 };
 
 export default CreateFlightForm;
-

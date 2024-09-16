@@ -189,7 +189,7 @@ const DuplicateFlightForm = () => {
           </div>
         </form>
         <section>
-           <MutationResultMessage mutation={mutation} link='/flights'/>
+          <MutationResultMessage mutation={mutation} link='/flights' />
         </section>
       </div>
     </div>

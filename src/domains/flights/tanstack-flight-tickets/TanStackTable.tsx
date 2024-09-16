@@ -1,5 +1,6 @@
 import { useState, useMemo } from 'react';
 
+
 import {
   ColumnDef,
   ColumnFiltersState,
@@ -45,7 +46,8 @@ export default function TanStackTable({ payload }: TanStackTableProps) {
     getSortedRowModel: getSortedRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
   });
-
+  
+  
   return (
     <div className='overflow-x-auto'>
       <table className='w-full table-auto'>
@@ -106,6 +108,7 @@ export default function TanStackTable({ payload }: TanStackTableProps) {
                     <td
                       className='text-xs w-[40px] border border-b border-[#eee] p-2 dark:border-strokedark'
                       key={cell.id}
+                     
                     >
                       {flexRender(
                         cell.column.columnDef.cell,

@@ -7,9 +7,10 @@ import { useTicketStore } from '../../store/ticketstore.ts';
 import { mutationFunction } from '../../services/mutationFunction.ts';
 import { useGenericMutation } from '../../hooks/useGenericMutation.tsx';
 import MutationResultMessage from '../shared/MutationResultMessage.tsx';
-import { CheckinFormData, CheckinSchema } from '../../schemas/checkin.schema.ts';
-
-
+import {
+  CheckinFormData,
+  CheckinSchema,
+} from '../../schemas/checkin.schema.ts';
 
 const CreateCheckinForm = () => {
   const {
@@ -22,7 +23,7 @@ const CreateCheckinForm = () => {
   //Global store hooks
   const user = useUserStore((state) => state.user);
   const { ticket } = useTicketStore((state) => state);
-  
+
   //--------------------------------------------------
   const url = 'http://127.0.0.1:8000/api/checkins/create-checkin';
   const { mutation } = useGenericMutation(
@@ -39,10 +40,8 @@ const CreateCheckinForm = () => {
     const _data = {
       ...data,
       ticket_id: ticket?.id,
-      
     };
     await mutation.mutateAsync(_data);
-    
   };
   return (
     <div className='flex items-center py-20 justify-center'>
@@ -111,7 +110,7 @@ const CreateCheckinForm = () => {
           </div>
         </form>
         <section>
-           <MutationResultMessage mutation={mutation} link='/checkins'/>
+          <MutationResultMessage mutation={mutation} link='/checkins' />
         </section>
       </div>
     </div>
@@ -119,4 +118,3 @@ const CreateCheckinForm = () => {
 };
 
 export default CreateCheckinForm;
-

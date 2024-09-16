@@ -12,7 +12,7 @@ import { useGenericMutation } from '../../hooks/useGenericMutation.tsx';
 import { mutationFunction } from '../../services/mutationFunction.ts';
 import MutationResultMessage from '../shared/MutationResultMessage.tsx';
 
-const UpdateFlightForm = () => {
+const CreateConnectionForm = () => {
   const {
     control,
     register,
@@ -26,13 +26,13 @@ const UpdateFlightForm = () => {
   const user = useUserStore((state) => state.user);
   const { flight } = useFlightStore((state) => state);
   //--------------------------------------------------
-
+  const url = 'http://127.0.0.1:8000/api/flights/create-flight';
   const { mutation } = useGenericMutation(
     mutationFunction,
-    `http://127.0.0.1:8000/api/flights/update-flight/${flight?.id}`,
-    'PUT',
+    url,
+    'POST',
     ['get-flights'],
-    ['update-flight'],
+    ['create-connection'],
     user?.token,
   );
 
@@ -48,15 +48,16 @@ const UpdateFlightForm = () => {
       departure_date: _departure_date,
       departure_time: _departure_time,
       arrival_time: _arrival_time,
+      connection_flight_id:flight?.id,
     };
-    //console.log(_data)
+    console.log(_data)
     await mutation.mutateAsync(_data);
   };
   return (
     <div className='flex items-center py-20 justify-center'>
       <div className='p-8  rounded-3xl shadow-lg w-full max-w-md dark:border'>
         <h2 className='text-3xl font-extrabold tracking-tight mb-15 text-center'>
-          Editar Vuelo
+          Crear Vuelo con Conexión
         </h2>
         <form className='' onSubmit={handleSubmit(onSubmit)}>
           <div className='py-4'>
@@ -196,15 +197,6 @@ const UpdateFlightForm = () => {
   );
 };
 
-export default UpdateFlightForm;
+export default CreateConnectionForm;
 
-/*
 
-{
-  "hour": 2,
-  "minute": 0,
-  "second": 0,
-  "millisecond": 0
-}
-
-*/
