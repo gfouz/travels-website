@@ -1,7 +1,19 @@
+import Modal from "./Modal";
+import { Flight } from '../../../flights.types.ts';
+
+type OriginalI = {
+  original: Flight;
+};
+
+interface IRow {
+  row: OriginalI;
+}
+
 export const columnsProperties = [
   {
-    accessorKey: 'flight_number', // Clave de acceso de datos
-    header: 'Numéro de vuelo', // Encabezado de la columna
+    accessorKey: 'departure_date',
+    cell: (info: { getValue: () => string | number | Date; }) => <i>{new Date(info.getValue()).toDateString()}</i>,
+    header: 'Fecha de vuelo',
   },
   {
     accessorKey: 'departure_place',
@@ -20,8 +32,15 @@ export const columnsProperties = [
     header: 'Hora de llegada',
   },
   {
-    accessorKey: 'departure_date',
-    header: 'Fecha de vuelo',
+    accessorKey: 'flight_number', // Clave de acceso de datos
+    header: 'Numéro de vuelo', // Encabezado de la columna
+  },
+   {
+    accessorKey: 'actions', // Puedes usar un accessor que no exista en los datos, solo para la presentación
+    header: 'Actions', // Título de la columna
+    cell: ({ row }: IRow) => (
+      <Modal  payload={row.original} />
+    ),
   },
 ];
 

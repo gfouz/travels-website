@@ -1,48 +1,15 @@
-import { useLocation } from 'react-router-dom';
-import { FlightConnected } from '../../tickets.types';
-import { Key } from 'react';
+import { Flight } from '../../../flights.types.ts';
 
-const TicketDetails = () => {
-  const location = useLocation();
-  const data = location.state;
+type FlightInfoProps = {
+  flight: Flight;
+}
 
-  const {
-    ticket_issuer,
-    flight,
-    id,
-    status,
-    airline,
-    booking_code,
-    price,
-    description,
-    created_at,
-  } = data;
-  const { connected_flight } = flight;
-
-  return (
-    <div className='p-8 max-w-4xl mx-auto bg-gray-50 shadow-lg rounded-lg border border-gray-200'>
-      <h1 className='text-3xl font-extrabold text-gray-800 mb-6'>
-        Detalles del Pasaje
-      </h1>
-
-      {/* Ticket Issuer Section */}
-      <section className='mb-8  p-6 rounded-lg shadow-md border border-gray-300'>
-        <h2 className='text-2xl font-semibold text-gray-700 mb-4'>
-          Emisor del Ticket
-        </h2>
-        <p className='text-gray-600'>
-          <strong>ID:</strong> {ticket_issuer.id}
-        </p>
-        <p className='text-gray-600'>
-          <strong>Nombre de Usuario:</strong> {ticket_issuer.username}
-        </p>
-      </section>
-
-      {/* Flight Section */}
-      <section className='mb-8  p-6 border border-gray-300 rounded-lgshadow-md'>
-        <h2 className='text-2xl font-semibold text-gray-700 mb-4'>
-          Detalles del Vuelo
-        </h2>
+ export default function FlightInfo( { flight }: FlightInfoProps){
+      const {connected_flight } = flight;
+    return(
+     <article className='modal-text-size'> 
+      <section className='mb-8  p-6 border border-gray-300 rounded-lg shadow-lg'>
+        
         <p className='text-gray-600'>
           <strong>ID del Vuelo:</strong> {flight.id}
         </p>
@@ -75,9 +42,7 @@ const TicketDetails = () => {
           <strong>Estado:</strong> {flight.status}
         </p>
       </section>
-
-      {/* Connected Flights Section */}
-      {connected_flight && connected_flight.length > 0 && (
+       {connected_flight && connected_flight.length > 0 && (
         <section className='mb-8 p-6 border border-gray-300 rounded-lg shadow-md'>
           <h2 className='text-2xl font-semibold text-gray-700 mb-4'>
             Vuelos Conectados
@@ -110,35 +75,7 @@ const TicketDetails = () => {
         </section>
       )}
 
-      {/* Ticket Details Section */}
-      <section className='mb-8 p-6 border border-gray-300 rounded-lg shadow-md'>
-        <h2 className='text-2xl font-semibold text-gray-700 mb-4'>
-          Detalles del Pasaje
-        </h2>
-        <p className='text-gray-600'>
-          <strong>ID:</strong> {id}
-        </p>
-        <p className='text-gray-600'>
-          <strong>Estado:</strong> {status}
-        </p>
-        <p className='text-gray-600'>
-          <strong>Aerolínea:</strong> {airline}
-        </p>
-        <p className='text-gray-600'>
-          <strong>Código de Reserva:</strong> {booking_code}
-        </p>
-        <p className='text-gray-600'>
-          <strong>Precio:</strong> {price}
-        </p>
-        <p className='text-gray-600'>
-          <strong>Descripción:</strong> {description}
-        </p>
-        <p>
-          <strong>Creado En:</strong> {new Date(created_at).toLocaleString()}
-        </p>
-      </section>
-    </div>
-  );
-};
+     </article> 
 
-export default TicketDetails;
+       )
+       }

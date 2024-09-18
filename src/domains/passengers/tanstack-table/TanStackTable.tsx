@@ -1,4 +1,7 @@
 import { useState, useMemo } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+//onClick={ ()=>{ handleClick(row?.original)}}
 
 import {
   ColumnDef,
@@ -14,11 +17,8 @@ import {
 
 import { columnsProperties } from './Columns.tsx';
 import Filter from './Filter.tsx'; //---------Filter-------//
-import { GenericObject } from '../../../hooks/hooks.types.ts';
-
-type TanStackTableProps = {
-  payload: GenericObject[] | undefined;
-};
+import { getListService } from '../../../services/getListService.ts';
+import { useGetListQuery } from '../../../hooks/useGetListQuery.tsx';
 
 declare module '@tanstack/react-table' {
   //allows us to define custom properties for our columns
@@ -26,8 +26,10 @@ declare module '@tanstack/react-table' {
     filterVariant?: 'text' | 'range' | 'select';
   }
 }
+const url = 'http://127.0.0.1:8000/api/passenger/get-passengers';
 
-export default function TanStackTable({ payload }: TanStackTableProps) {
+export default function TanStackTable() {
+  const { payload } = useGetListQuery(getListService, url, ['get-passengers']);
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
 
   const columns = useMemo<ColumnDef<any, any>[]>(() => columnsProperties, []);
@@ -98,13 +100,13 @@ export default function TanStackTable({ payload }: TanStackTableProps) {
           {table.getRowModel().rows.map((row) => {
             return (
               <tr
-                className='pointer border border-b border-[#eee]'
-                key={row.original.id}
+                key={row.original?.id}
+                className='border border-b border-[#eee] cursor-pointer '
               >
                 {row.getVisibleCells().map((cell) => {
                   return (
                     <td
-                      className='text-xs w-[40px] border border-b border-[#eee] p-2 dark:border-strokedark'
+                      className=' text-xs w-[40px] border border-b border-[#eee] p-2 dark:border-strokedark'
                       key={cell.id}
                     >
                       {flexRender(

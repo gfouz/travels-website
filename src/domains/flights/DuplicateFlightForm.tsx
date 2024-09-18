@@ -4,6 +4,8 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { DatePicker } from '@nextui-org/date-picker';
 import { Input } from '@nextui-org/input';
 import { TimeInput } from '@nextui-org/date-input';
+//import {parseZonedDateTime} from "@internationalized/date";
+
 import { formatDate, formatTime, url } from './constants.ts';
 import { useUserStore } from '../../store/userstore.ts';
 import { useFlightStore } from '../../store/flightstore.ts';
@@ -199,7 +201,11 @@ const DuplicateFlightForm = () => {
 export default DuplicateFlightForm;
 
 /*
+  
+ defaultValue={parseAbsoluteToLocal("2021-11-07T07:45:00Z")}
+ 2024-09-24T00:00:00Z
 
+ 
 {
   "hour": 2,
   "minute": 0,

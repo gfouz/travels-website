@@ -8,7 +8,6 @@ import { useDeleteMutation } from '../../../hooks/useDeleteMutation.tsx';
 import { useUserStore } from '../../../store/userstore.ts';
 import { useTicketStore } from '../../../store/ticketstore.ts';
 
-
 export default function ModalNavButton({ ticket_id }: { ticket_id?: string }) {
   const [warning, setWarning] = React.useState(false);
 
@@ -25,20 +24,30 @@ export default function ModalNavButton({ ticket_id }: { ticket_id?: string }) {
   );
   const { ticket } = useTicketStore((state) => state);
   const navigate = useNavigate();
-  
+
   const handleClick = (data: any) => {
-    navigate("/ticket-details", { state: ticket });
+    navigate('/ticket-details', { state: ticket });
   };
   return warning == false ? (
     <>
       <div className='flex justify-evenly items-center'>
-        <Button showAnchorIcon href='tickets/update' as={Link} size='sm'>
+        <Button
+          className='font-extrabold tracking-widest'
+          showAnchorIcon
+          href='tickets/update'
+          as={Link}
+          size='sm'
+        >
           Editar
         </Button>
-        <Button showAnchorIcon  
-          as={Link} 
+        <Button
+          showAnchorIcon
+          as={Link}
           size='sm'
-          onPress={ ()=>{ handleClick()} }
+          onPress={() => {
+            handleClick();
+          }}
+          className='font-extrabold tracking-widest'
         >
           Ver detalles
         </Button>
@@ -48,18 +57,20 @@ export default function ModalNavButton({ ticket_id }: { ticket_id?: string }) {
           }}
           size='sm'
           color='danger'
+          className='font-extrabold tracking-widest'
         >
           Eliminar
         </Button>
       </div>
       <Button
         showAnchorIcon
-        href='checkins/create/'
+        href='passengers/create/'
         as={Link}
         size='sm'
-        color='warning'
+        color='primary'
+        className='font-extrabold tracking-widest'
       >
-        Check In
+        Asociar Pasaje a Cliente
       </Button>
     </>
   ) : (

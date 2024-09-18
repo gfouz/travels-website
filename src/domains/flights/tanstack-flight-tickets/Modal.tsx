@@ -7,7 +7,7 @@ import {
   useDisclosure,
 } from '@nextui-org/modal';
 import { Button } from '@nextui-org/button';
-import { useNavigate } from 'react-router-dom';
+//import { useNavigate } from 'react-router-dom';
 
 import ModalNavButton from './ModalNavButtons.tsx';
 import { Ticket } from '../../../tickets.types.ts';
@@ -20,9 +20,9 @@ interface IModal {
 export default function NextModal({ payload }: IModal) {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const dispatch = useTicketStore((state) => state.dispatch);
+  //const dispatch = useTicketStore((state) => state.dispatch);
   const { ticket } = useTicketStore((state) => state);
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
   const handleClick = (data: any) => {
     console.log(data)
     //navigate("/ticket-details", { state: data });
@@ -37,7 +37,7 @@ export default function NextModal({ payload }: IModal) {
           size='sm'
           onPress={() => {
             //dispatch({ type: 'SET_TICKET', payload: payload });
-            onPress={ ()=>{ handleClick(payload) }}
+            handleClick(payload);
             onOpen();
           }}
           className='capitalize h-[20px]'

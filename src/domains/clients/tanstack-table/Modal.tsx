@@ -7,42 +7,34 @@ import {
   useDisclosure,
 } from '@nextui-org/modal';
 import { Button } from '@nextui-org/button';
-import { useNavigate } from 'react-router-dom';
-
-import ModalNavButton from './ModalNavButtons.tsx';
-import { Ticket } from '../../../tickets.types.ts';
-import { useTicketStore } from '../../../store/ticketstore.ts';
+import { Flight } from '../../../flights.types.ts';
+import { useFlightStore } from '../../../store/flightstore.ts';
+import FlightInfo from './FlightInfo.tsx'
 
 interface IModal {
-  payload: Ticket;
+  payload: Flight;
 }
 
 export default function NextModal({ payload }: IModal) {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const dispatch = useTicketStore((state) => state.dispatch);
-  const { ticket } = useTicketStore((state) => state);
+  const dispatch = useFlightStore((state) => state.dispatch);
 
-  const navigate = useNavigate();
-  const handleClick = (data: any) => {
-    console.log(data);
-    navigate('/tickets', { state: data });
-  };
+  const { flight } = useFlightStore((state) => state);
 
   return (
     <>
       <div className='flex justify-center flex-wrap gap-3'>
         <Button
+          size='md'
           variant='shadow'
-          color='danger'
-          size='sm'
           onPress={() => {
-            dispatch({ type: 'SET_TICKET', payload: payload });
+            dispatch({ type: 'SET_FLIGHT', payload: payload });
             onOpen();
           }}
           className='capitalize h-[20px]'
         >
-          Actions
+          VER MAS
         </Button>
       </div>
       <Modal backdrop='blur' isOpen={isOpen} onClose={onClose}>
@@ -50,10 +42,10 @@ export default function NextModal({ payload }: IModal) {
           {() => (
             <>
               <ModalHeader className='flex flex-col gap-1'>
-                Administrar Pasajes
+                Acerca del Vuelo.
               </ModalHeader>
               <ModalBody>
-                <ModalNavButton ticket_id={ticket.id} />
+               <FlightInfo flight={flight} />  
               </ModalBody>
               <ModalFooter></ModalFooter>
             </>

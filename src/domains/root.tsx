@@ -21,11 +21,14 @@ const Root = () => {
           <section className='absolute top-0 flex px-8 justify-center left-0 w-full h-full'>
             <a
               href='https://github.com/gfouz'
-              className='w-full flex flex-col pt-20'
+              className='w-full mt-[10%] ml-6  pt-20'
             >
-              <h2 className='text-[7vw] sr-only uppercase text-white font-extrabold white-text-shadow'>
-                travels
+              <h2 className='text-[6vw] uppercase text-teal-700 font-extrabold'>
+                Welcome!
               </h2>
+              <h3 className='text-[2.5vw] text-gray-700 tracking-wider m-0 md:mt-6'>
+                Time to travel
+              </h3>
             </a>
           </section>
         </section>

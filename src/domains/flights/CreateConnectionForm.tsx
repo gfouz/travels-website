@@ -48,9 +48,9 @@ const CreateConnectionForm = () => {
       departure_date: _departure_date,
       departure_time: _departure_time,
       arrival_time: _arrival_time,
-      connection_flight_id:flight?.id,
+      connection_flight_id: flight?.id,
     };
-    console.log(_data)
+    console.log(_data);
     await mutation.mutateAsync(_data);
   };
   return (
@@ -198,5 +198,3 @@ const CreateConnectionForm = () => {
 };
 
 export default CreateConnectionForm;
-
-

@@ -7,37 +7,30 @@ import {
   useDisclosure,
 } from '@nextui-org/modal';
 import { Button } from '@nextui-org/button';
-import { useNavigate } from 'react-router-dom';
-
 import ModalNavButton from './ModalNavButtons.tsx';
-import { Ticket } from '../../../tickets.types.ts';
-import { useTicketStore } from '../../../store/ticketstore.ts';
+import { usePassengerStore } from '../../../store/passengerStore.ts';
+import { Passenger } from '../../../passenger.types.ts';
 
 interface IModal {
-  payload: Ticket;
+  payload: Passenger;
 }
 
 export default function NextModal({ payload }: IModal) {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const dispatch = useTicketStore((state) => state.dispatch);
-  const { ticket } = useTicketStore((state) => state);
+  const dispatch = usePassengerStore((state) => state.dispatch);
 
-  const navigate = useNavigate();
-  const handleClick = (data: any) => {
-    console.log(data);
-    navigate('/tickets', { state: data });
-  };
+  const { passenger } = usePassengerStore((state) => state);
 
   return (
     <>
       <div className='flex justify-center flex-wrap gap-3'>
         <Button
+          size='md'
           variant='shadow'
           color='danger'
-          size='sm'
           onPress={() => {
-            dispatch({ type: 'SET_TICKET', payload: payload });
+            dispatch({ type: 'SET_PASSENGER', payload: payload });
             onOpen();
           }}
           className='capitalize h-[20px]'
@@ -50,10 +43,10 @@ export default function NextModal({ payload }: IModal) {
           {() => (
             <>
               <ModalHeader className='flex flex-col gap-1'>
-                Administrar Pasajes
+                Administrar Pasajero
               </ModalHeader>
               <ModalBody>
-                <ModalNavButton ticket_id={ticket.id} />
+                <ModalNavButton passenger={passenger} />
               </ModalBody>
               <ModalFooter></ModalFooter>
             </>

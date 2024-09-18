@@ -28,11 +28,10 @@ body {
   font-size: clamp(1rem, calc(0.93rem + 0.33vw), 1.19rem);
 }
 
-.overlap-max {
-  z-index: 10;
-}
-.overlap-min {
-  z-index: -1;
+.modal-text-size p {
+  font-size: 10px;
+  margin: 0;
+  padding: 0;
 }
 
 .grid-auto-fit {

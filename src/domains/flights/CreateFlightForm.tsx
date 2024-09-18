@@ -30,7 +30,6 @@ const CreateFlightForm = () => {
     ['create-flight'],
     user?.token,
   );
-
   const onSubmit: SubmitHandler<FlightFormData> = async (
     data: FlightFormData,
   ) => {
@@ -62,7 +61,7 @@ const CreateFlightForm = () => {
                 {...register('flight_number')}
                 classNames={{ label: '!text-gray-800' }}
                 isInvalid={errors.flight_number?.message ? true : false}
-                errorMessage={`${errors.flight_number?.message}`}
+                errorMessage={`${errors?.flight_number?.message}`}
               />
             </div>
           </div>
@@ -74,8 +73,8 @@ const CreateFlightForm = () => {
                 variant='underlined'
                 {...register('departure_place')}
                 classNames={{ label: '!text-gray-800' }}
-                isInvalid={errors.flight_number?.message ? true : false}
-                errorMessage={`${errors.departure_place?.message}`}
+                isInvalid={errors.departure_place?.message ? true : false}
+                errorMessage={`${errors?.departure_place?.message}`}
               />
             </div>
           </div>
@@ -123,12 +122,12 @@ const CreateFlightForm = () => {
                 render={({ field }) => (
                   //@ts-ignore
                   <TimeInput
+                    {...field}
                     hourCycle={24}
                     label='Hora del Vuelo'
                     labelPlacement='outside'
-                    {...field}
-                    isInvalid={errors.departure_time?.message ? true : false}
-                    errorMessage='Please enter a valid time'
+                    isInvalid={errors?.departure_time?.message ? true : false}
+                    errorMessage={`${errors?.departure_time?.message}`}
                   />
                 )}
               />
@@ -147,8 +146,8 @@ const CreateFlightForm = () => {
                     hourCycle={24}
                     label='Hora estimada de llegada'
                     labelPlacement='outside'
-                    isInvalid={errors.arrival_time?.message ? true : false}
-                    errorMessage='Please enter a valid time'
+                    isInvalid={errors?.arrival_time?.message ? true : false}
+                    errorMessage={`${errors.arrival_time?.message}`}
                   />
                 )}
               />

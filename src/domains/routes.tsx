@@ -3,6 +3,11 @@ const Root = lazy(() => import('./root'));
 const CreateUserPage = lazy(() => import('./users/create-user.tsx'));
 const SignInPage = lazy(() => import('./users/signin-user'));
 const Users = lazy(() => import('./users/index.tsx'));
+const Passengers = lazy(() => import('./passengers/index.tsx'));
+const CreatePassengerPage = lazy(
+  () => import('./passengers/create-passenger.tsx'),
+);
+
 const Flights = lazy(() => import('./flights/index.tsx'));
 const CreateFlightPage = lazy(() => import('./flights/create-flight.tsx'));
 const UpdateFlightPage = lazy(() => import('./flights/update-flight.tsx'));
@@ -10,14 +15,18 @@ const DuplicateFlightPage = lazy(
   () => import('./flights/duplicate-flight.tsx'),
 );
 const FlightTickets = lazy(() => import('./flights/flight-tickets.tsx'));
-const CreateConnectionPage = lazy(() => import('./flights/create-connetion.tsx'));
+const CreateConnectionPage = lazy(
+  () => import('./flights/create-connetion.tsx'),
+);
 
 const FlightsForClients = lazy(() => import('./clients/index.tsx'));
 
 const Tickets = lazy(() => import('./tickets/index.tsx'));
 const CreateTicketPage = lazy(() => import('./tickets/create-ticket.tsx'));
 const UpdateTicketPage = lazy(() => import('./tickets/update-ticket.tsx'));
-const TicketDetailsPage = lazy(()=> import('./tickets/show-ticket-details.tsx'))
+const TicketDetailsPage = lazy(
+  () => import('./tickets/show-ticket-details.tsx'),
+);
 
 const Checkins = lazy(() => import('./checkins/index.tsx'));
 const CreateCheckinPage = lazy(() => import('./checkins/create-checkin.tsx'));
@@ -41,6 +50,14 @@ export const list = [
     errorElement: <ErrorPage />,
   },
   {
+    path: 'passengers/',
+    element: <Passengers />,
+  },
+  {
+    path: 'passengers/create',
+    element: <CreatePassengerPage />,
+  },
+  {
     path: 'flights/',
     element: <Flights />,
     errorElement: <ErrorPage />,
@@ -55,7 +72,7 @@ export const list = [
     element: <UpdateFlightPage />,
     errorElement: <ErrorPage />,
   },
-   {
+  {
     path: 'flights/create-connection/',
     element: <CreateConnectionPage />,
     errorElement: <ErrorPage />,

@@ -57,8 +57,6 @@ export interface TicketIssuer {
   username: string;
 }
 
-
-
 export interface FullTicket {
   id: number;
   price: number | string;

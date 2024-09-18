@@ -8,7 +8,7 @@ const FlightTickets = () => {
   const location = useLocation();
   const data = location.state;
   const tickets = data?.tickets.map((item: Ticket) => item);
-
+  //console.log(tickets)
   return (
     <Layout model='Pasajes por Vuelo'>
       <TanStackTable payload={tickets} />

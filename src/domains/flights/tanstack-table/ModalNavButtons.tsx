@@ -36,29 +36,37 @@ export default function ModalNavButton({ flight }: ModalNavButtonProps) {
   return warning == false ? (
     <>
       <div className=' gap-1'>
-       <div className='w-full flex justify-center items-center gap-2'> 
-        <Button showAnchorIcon href='flights/create' as={Link} size='sm'>
-          Añadir
-        </Button>
-        <Button showAnchorIcon href='flights/update' as={Link} size='sm'>
-          Editar
-        </Button>
-        <Button showAnchorIcon href='flights/duplicate' as={Link} size='sm'>
-          Duplicar
-        </Button>
+        <div className='w-full flex justify-center items-center gap-2'>
+          <Button
+            className='font-extrabold tracking-widest'
+            showAnchorIcon
+            href='flights/create'
+            as={Link}
+            size='sm'
+          >
+            Añadir
+          </Button>
+          <Button
+            className='font-extrabold tracking-widest'
+            showAnchorIcon
+            href='flights/update'
+            as={Link}
+            size='sm'
+          >
+            Editar
+          </Button>
+          <Button
+            className='font-extrabold tracking-widest'
+            showAnchorIcon
+            href='flights/duplicate'
+            as={Link}
+            size='sm'
+          >
+            Duplicar
+          </Button>
         </div>
-        
       </div>
       <div className='flex justify-center items-center gap-2'>
-        <Button
-          showAnchorIcon
-          href='tickets/create/'
-          as={Link}
-          size='sm'
-          color='primary'
-        >
-          Reservar Pasaje
-        </Button>
         <Button
           showAnchorIcon
           as={Link}
@@ -67,12 +75,19 @@ export default function ModalNavButton({ flight }: ModalNavButtonProps) {
           onPress={() => {
             handleClick();
           }}
+          className='font-extrabold tracking-widest'
         >
           Pasajes x Vuelos
         </Button>
       </div>
       <div className='flex justify-center items-center gap-2'>
-        <Button showAnchorIcon href='flights/create-connection' as={Link} size='sm'>
+        <Button
+          className='font-extrabold tracking-widest'
+          showAnchorIcon
+          href='flights/create-connection'
+          as={Link}
+          size='sm'
+        >
           Asociar a otro
         </Button>
         <Button
@@ -81,10 +96,11 @@ export default function ModalNavButton({ flight }: ModalNavButtonProps) {
           }}
           size='sm'
           color='danger'
+          className='font-extrabold tracking-widest'
         >
           Eliminar
         </Button>
-     </div> 
+      </div>
     </>
   ) : (
     <>
@@ -94,6 +110,7 @@ export default function ModalNavButton({ flight }: ModalNavButtonProps) {
         onPress={async () => {
           await mutation.mutateAsync();
         }}
+        className='font-extrabold tracking-widest'
       >
         <span className='font-extrabold'>
           Advertencia! Eliminará un registro!

@@ -95,7 +95,7 @@ export default function TanStackTable() {
             return (
               <tr
                 key={row.original?.id}
-                className='border border-b border-[#f1f1f140] cursor-pointer '
+                className='border border-b border-[#f1f1f140] cursor-pointer'
               >
                 {row.getVisibleCells().map((cell) => {
                   return (

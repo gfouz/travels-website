@@ -20,7 +20,7 @@ export const initialState = {
   last_name: undefined,
   passport: undefined,
   ticket: undefined,
-  reservation_code: undefined,
+  booking_code: undefined,
 };
 //Redux-like patterns store
 const checkinState = persist<CheckinStore>(
