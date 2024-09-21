@@ -2,7 +2,7 @@ import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
 
 import './index.css';
-import { list } from './domains/routes';
+import { list } from './domains/routes.tsx';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 // import { NextUIProvider } from '@nextui-org/react';

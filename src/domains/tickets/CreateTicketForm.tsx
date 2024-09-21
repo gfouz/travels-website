@@ -42,6 +42,9 @@ const CreateTicketForm = () => {
       ...data,
       last_reservation_date: _last_reservation_date,
       flight_id: flight?.id,
+      infant_price: flight?.infant_price,
+      child_price: flight?.child_price,
+      adult_price: flight?.adult_price,
       ticket_issuer_id: user?.id,
     };
 
@@ -79,21 +82,6 @@ const CreateTicketForm = () => {
                 classNames={{ label: '!text-gray-800' }}
                 isInvalid={errors.booking_code?.message ? true : false}
                 errorMessage={`${errors.booking_code?.message}`}
-              />
-            </div>
-          </div>
-          <div className='py-4'>
-            <div className='w-full'>
-              <Input
-                type='number'
-                label='Precio'
-                variant='underlined'
-                labelPlacement='outside'
-                {...register('price')}
-                defaultValue={flight?.price?.toString()}
-                classNames={{ label: '!text-gray-800' }}
-                isInvalid={errors.price?.message ? true : false}
-                errorMessage={`${errors.price?.message}`}
               />
             </div>
           </div>

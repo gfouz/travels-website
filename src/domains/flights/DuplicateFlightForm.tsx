@@ -4,6 +4,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { DatePicker } from '@nextui-org/date-picker';
 import { Input } from '@nextui-org/input';
 import { TimeInput } from '@nextui-org/date-input';
+import { parseDate, parseTime } from '@internationalized/date';
 //import {parseZonedDateTime} from "@internationalized/date";
 
 import { formatDate, formatTime, url } from './constants.ts';
@@ -74,7 +75,51 @@ const DuplicateFlightForm = () => {
               />
             </div>
           </div>
-
+          <div className='py-4'>
+            <div className='w-full'>
+              <Input
+                type='number'
+                label='Precio de Infantes'
+                variant='underlined'
+                labelPlacement='outside'
+                {...register('infant_price')}
+                defaultValue={flight?.infant_price?.toString()}
+                classNames={{ label: '!text-gray-800' }}
+                isInvalid={errors.infant_price?.message ? true : false}
+                errorMessage={`${errors.infant_price?.message}`}
+              />
+            </div>
+          </div>
+          <div className='py-4'>
+            <div className='w-full'>
+              <Input
+                type='number'
+                label='Precio de niño'
+                variant='underlined'
+                labelPlacement='outside'
+                {...register('child_price')}
+                defaultValue={flight?.child_price?.toString()}
+                classNames={{ label: '!text-gray-800' }}
+                isInvalid={errors.child_price?.message ? true : false}
+                errorMessage={`${errors.child_price?.message}`}
+              />
+            </div>
+          </div>
+          <div className='py-4'>
+            <div className='w-full'>
+              <Input
+                type='number'
+                label='Precio de Adulto'
+                variant='underlined'
+                labelPlacement='outside'
+                {...register('adult_price')}
+                defaultValue={flight?.adult_price?.toString()}
+                classNames={{ label: '!text-gray-800' }}
+                isInvalid={errors.adult_price?.message ? true : false}
+                errorMessage={`${errors.adult_price?.message}`}
+              />
+            </div>
+          </div>
           <div className='py-4'>
             <div className='w-full'>
               <Input
@@ -117,6 +162,9 @@ const DuplicateFlightForm = () => {
                       input: 'datepicker-input',
                       label: '!text-gray-800',
                     }}
+                    defaultValue={parseDate(
+                      flight?.departure_date?.split('T')[0] || '',
+                    )}
                     isInvalid={errors.departure_date?.message ? true : false}
                     errorMessage={`${errors.departure_date?.message}`}
                   />
@@ -137,6 +185,7 @@ const DuplicateFlightForm = () => {
                     label='Hora del Vuelo'
                     labelPlacement='outside'
                     {...field}
+                    defaultValue={parseTime(flight?.departure_time || '')}
                     isInvalid={errors.departure_time?.message ? true : false}
                     errorMessage='Please enter a valid time'
                   />
@@ -159,6 +208,7 @@ const DuplicateFlightForm = () => {
                     labelPlacement='outside'
                     isInvalid={errors.arrival_time?.message ? true : false}
                     errorMessage='Please enter a valid time'
+                    defaultValue={parseTime(flight?.arrival_time || '')}
                   />
                 )}
               />
@@ -204,7 +254,8 @@ export default DuplicateFlightForm;
   
  defaultValue={parseAbsoluteToLocal("2021-11-07T07:45:00Z")}
  2024-09-24T00:00:00Z
-
+ 
+Invalid ISO 8601 date string: 2024-09-27T00:00:00Z
  
 {
   "hour": 2,

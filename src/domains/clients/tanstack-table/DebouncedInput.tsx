@@ -27,7 +27,7 @@ export default function DebouncedInput({
 
   return (
     <Input
-      style={{ width: '80px' }}
+      style={{ width: '60px' }}
       className='border rounded border-[#eee]'
       placeholder='Search...'
       size='sm'

@@ -2,8 +2,10 @@ import { Button } from '@nextui-org/button';
 import { Controller, useForm, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { DatePicker } from '@nextui-org/date-picker';
+import { parseDate, parseTime } from '@internationalized/date';
 import { Input } from '@nextui-org/input';
 import { TimeInput } from '@nextui-org/date-input';
+
 import { formatDate, formatTime } from './constants.ts';
 import { useUserStore } from '../../store/userstore.ts';
 import { useFlightStore } from '../../store/flightstore.ts';
@@ -50,7 +52,7 @@ const CreateConnectionForm = () => {
       arrival_time: _arrival_time,
       connection_flight_id: flight?.id,
     };
-    console.log(_data);
+    //console.log(_data);
     await mutation.mutateAsync(_data);
   };
   return (
@@ -73,7 +75,51 @@ const CreateConnectionForm = () => {
               />
             </div>
           </div>
-
+          <div className='py-4'>
+            <div className='w-full'>
+              <Input
+                type='number'
+                label='Precio de Infantes'
+                variant='underlined'
+                labelPlacement='outside'
+                {...register('infant_price')}
+                defaultValue={flight?.infant_price?.toString()}
+                classNames={{ label: '!text-gray-800' }}
+                isInvalid={errors.infant_price?.message ? true : false}
+                errorMessage={`${errors.infant_price?.message}`}
+              />
+            </div>
+          </div>
+          <div className='py-4'>
+            <div className='w-full'>
+              <Input
+                type='number'
+                label='Precio de niño'
+                variant='underlined'
+                labelPlacement='outside'
+                {...register('child_price')}
+                defaultValue={flight?.child_price?.toString()}
+                classNames={{ label: '!text-gray-800' }}
+                isInvalid={errors.child_price?.message ? true : false}
+                errorMessage={`${errors.child_price?.message}`}
+              />
+            </div>
+          </div>
+          <div className='py-4'>
+            <div className='w-full'>
+              <Input
+                type='number'
+                label='Precio de Adulto'
+                variant='underlined'
+                labelPlacement='outside'
+                {...register('adult_price')}
+                defaultValue={flight?.adult_price?.toString()}
+                classNames={{ label: '!text-gray-800' }}
+                isInvalid={errors.adult_price?.message ? true : false}
+                errorMessage={`${errors.adult_price?.message}`}
+              />
+            </div>
+          </div>
           <div className='py-4'>
             <div className='w-full'>
               <Input
@@ -118,6 +164,9 @@ const CreateConnectionForm = () => {
                     }}
                     isInvalid={errors.departure_date?.message ? true : false}
                     errorMessage={`${errors.departure_date?.message}`}
+                    defaultValue={parseDate(
+                      flight?.departure_date?.split('T')[0] || '',
+                    )}
                   />
                 )}
               />
@@ -138,6 +187,7 @@ const CreateConnectionForm = () => {
                     {...field}
                     isInvalid={errors.departure_time?.message ? true : false}
                     errorMessage='Please enter a valid time'
+                    defaultValue={parseTime(flight?.departure_time || '')}
                   />
                 )}
               />
@@ -158,6 +208,7 @@ const CreateConnectionForm = () => {
                     labelPlacement='outside'
                     isInvalid={errors.arrival_time?.message ? true : false}
                     errorMessage='Please enter a valid time'
+                    defaultValue={parseTime(flight?.arrival_time || '')}
                   />
                 )}
               />

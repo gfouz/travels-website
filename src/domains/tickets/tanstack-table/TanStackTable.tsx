@@ -96,9 +96,10 @@ export default function TanStackTable({ payload }: TanStackTableProps) {
         </thead>
         <tbody>
           {table.getRowModel().rows.map((row) => {
+            const { original } = row;
             return (
               <tr
-                className='pointer border border-b border-[#eee]'
+                className={`pointer border border-b border-[#eee] ${original?.status == 'booked' && 'text-rose-500'}`}
                 key={row.original.id}
               >
                 {row.getVisibleCells().map((cell) => {

@@ -13,7 +13,9 @@ const TicketDetails = () => {
     status,
     airline,
     booking_code,
-    price,
+    infant_price,
+    child_price,
+    adult_price,
     description,
     created_at,
   } = data;
@@ -46,9 +48,7 @@ const TicketDetails = () => {
         <p className='text-gray-600'>
           <strong>ID del Vuelo:</strong> {flight.id}
         </p>
-        <p className='text-gray-600'>
-          <strong>Rol:</strong> {flight.role}
-        </p>
+        
         <p className='text-gray-600'>
           <strong>Lugar de Salida:</strong> {flight.departure_place}
         </p>
@@ -128,7 +128,13 @@ const TicketDetails = () => {
           <strong>Código de Reserva:</strong> {booking_code}
         </p>
         <p className='text-gray-600'>
-          <strong>Precio:</strong> {price}
+          <strong>Precio de Infantes:</strong> {infant_price}
+        </p>
+        <p className='text-gray-600'>
+          <strong>Precio de Niño:</strong> {child_price}
+        </p>
+        <p className='text-gray-600'>
+          <strong>Precio de Adulto:</strong> {adult_price}
         </p>
         <p className='text-gray-600'>
           <strong>Descripción:</strong> {description}

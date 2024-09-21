@@ -1,6 +1,8 @@
 import Modal from "./Modal";
 import { Flight } from '../../../flights.types.ts';
 
+type IDateGetValue =  () => string | number | Date;
+type IGetValue = ()=> string;
 type OriginalI = {
   original: Flight;
 };
@@ -10,37 +12,26 @@ interface IRow {
 }
 
 export const columnsProperties = [
-  {
-    accessorKey: 'departure_date',
-    cell: (info: { getValue: () => string | number | Date; }) => <i>{new Date(info.getValue()).toDateString()}</i>,
-    header: 'Fecha de vuelo',
-  },
+ 
   {
     accessorKey: 'departure_place',
-    header: 'Origen',
+    cell: (info: { getValue: IGetValue }) => <h2 className='text-slate-500 font-extrabold text-lg'>{info.getValue()}</h2>,
+    header: 'Por Origen',
   },
   {
     accessorKey: 'arrival_place',
-    header: 'Destino',
+    cell: (info: { getValue: IGetValue }) => <i className='text-slate-500 font-extrabold text-lg'>{info.getValue()}</i>,
+    header: 'Por Destino',
   },
   {
-    accessorKey: 'departure_time',
-    header: 'Hora de salida',
-  },
-  {
-    accessorKey: 'arrival_time',
-    header: 'Hora de llegada',
-  },
-  {
-    accessorKey: 'flight_number', // Clave de acceso de datos
-    header: 'Numéro de vuelo', // Encabezado de la columna
+    accessorKey: 'adult_price',
+    cell: (info: { getValue: IGetValue }) => <i className='text-slate-500 font-extrabold text-lg'>Precio: {info.getValue()}$</i>,
+    header: 'Por Precio',
   },
    {
-    accessorKey: 'actions', // Puedes usar un accessor que no exista en los datos, solo para la presentación
-    header: 'Actions', // Título de la columna
-    cell: ({ row }: IRow) => (
-      <Modal  payload={row.original} />
-    ),
+    accessorKey: 'departure_date',
+    cell: (info: { getValue: IDateGetValue }) => <i className='text-rose-500 text-xl'>{new Date(info.getValue()).toDateString()}</i>,
+    header: 'Por Fecha',
   },
 ];
 

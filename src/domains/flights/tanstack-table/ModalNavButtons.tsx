@@ -69,6 +69,15 @@ export default function ModalNavButton({ flight }: ModalNavButtonProps) {
       <div className='flex justify-center items-center gap-2'>
         <Button
           showAnchorIcon
+          href='tickets/create/'
+          as={Link}
+          size='sm'
+          className='font-extrabold tracking-widest'
+        >
+          Crear Pasaje
+        </Button>
+        <Button
+          showAnchorIcon
           as={Link}
           size='sm'
           color='default'

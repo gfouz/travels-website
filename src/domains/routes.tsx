@@ -88,7 +88,7 @@ export const list = [
     errorElement: <ErrorPage />,
   },
   {
-    path: 'flight-Schedule/',
+    path: 'vuelos/',
     element: <FlightsForClients />,
     errorElement: <ErrorPage />,
   },

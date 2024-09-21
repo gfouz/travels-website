@@ -40,7 +40,8 @@ body {
 }
 .grid-post-card {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 320px));
+  place-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 300px));
 }
 
 .selected_categories:checked {

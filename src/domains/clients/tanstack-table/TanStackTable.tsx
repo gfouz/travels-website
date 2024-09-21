@@ -1,4 +1,8 @@
 import { useState, useMemo } from 'react';
+import TanStackCardList from './FlightList.tsx';
+import Card from './Card.tsx';
+import Filter from './Filter.tsx'; //---------Filter-------//
+
 
 import {
   ColumnDef,
@@ -13,7 +17,6 @@ import {
 } from '@tanstack/react-table';
 
 import { columnsProperties } from './Columns.tsx';
-import Filter from './Filter.tsx'; //---------Filter-------//
 import { getListService } from '../../../services/getListService.ts';
 import { useGetListQuery } from '../../../hooks/useGetListQuery.tsx';
 
@@ -46,25 +49,20 @@ export default function TanStackTable() {
   });
 
   return (
-    <div className='overflow-x-auto'>
-      <table className='w-full table-auto'>
-        <thead>
+    <div className=''>
+      <div className=''>
+        <header>
           {table.getHeaderGroups().map((headerGroup) => (
-            <tr className=' text-left dark:bg-meta-4' key={headerGroup.id}>
+            <div className='w-full flex text-left' key={headerGroup.id}>
               {headerGroup.headers.map((header) => {
                 return (
-                  <th
-                    className='p-2 w-[40px] text-xs text-white'
+                  <section
+                    className='w-full p-6 text-md text-gray-700'
                     key={header.id}
                     colSpan={header.colSpan}
                   >
                     {header.isPlaceholder ? null : (
                       <>
-                        {header.column.getCanFilter() ? (
-                          <div className='my-4'>
-                            <Filter column={header.column} />
-                          </div>
-                        ) : null}
                         <div
                           {...{
                             className: header.column.getCanSort()
@@ -82,39 +80,25 @@ export default function TanStackTable() {
                             desc: ' 🔽',
                           }[header.column.getIsSorted() as string] ?? null}
                         </div>
+                        {header.column.getCanFilter() ? (
+                          <div className='my-4 !text-gray-900'>
+                            <Filter column={header.column} />
+                          </div>
+                        ) : null}
                       </>
                     )}
-                  </th>
+                  </section>
                 );
               })}
-            </tr>
+            </div>
           ))}
-        </thead>
-        <tbody>
+        </header>
+        <div className='grid grid-cols-[repeat(auto-fit,minmax(200px,300px))]  place-content-center gap-2 w-full'>
           {table.getRowModel().rows.map((row) => {
-            return (
-              <tr
-                key={row.original?.id}
-                className='border border-b border-[#f1f1f140] cursor-pointer'
-              >
-                {row.getVisibleCells().map((cell) => {
-                  return (
-                    <td
-                      className=' text-xs text-white w-[40px] border border-b border-[#eee] p-2 dark:border-strokedark'
-                      key={cell.id}
-                    >
-                      {flexRender(
-                        cell.column.columnDef.cell,
-                        cell.getContext(),
-                      )}
-                    </td>
-                  );
-                })}
-              </tr>
-            );
+            return <div key={row?.original?.id}><Card row={row} /></div>;
           })}
-        </tbody>
-      </table>
+        </div>
+      </div>
       <div className='flex items-center gap-2 py-16 px-2'>
         <button
           className='border rounded p-1'

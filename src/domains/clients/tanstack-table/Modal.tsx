@@ -9,7 +9,7 @@ import {
 import { Button } from '@nextui-org/button';
 import { Flight } from '../../../flights.types.ts';
 import { useFlightStore } from '../../../store/flightstore.ts';
-import FlightInfo from './FlightInfo.tsx'
+import FlightInfo from './FlightInfo.tsx';
 
 interface IModal {
   payload: Flight;
@@ -37,7 +37,19 @@ export default function NextModal({ payload }: IModal) {
           VER MAS
         </Button>
       </div>
-      <Modal backdrop='blur' isOpen={isOpen} onClose={onClose}>
+      <Modal
+        classNames={{
+          body: 'py-0',
+          backdrop: 'bg-[#292f46]/50 backdrop-opacity-40',
+          base: 'border-[#292f46] bg-[#19172c] dark:bg-[#19172c] text-[#a8b0d3]',
+          header: 'border-b-[1px] border-[#292f46]',
+          footer: 'border-t-[1px] border-[#292f46]',
+          closeButton: 'hover:bg-white/5 active:bg-white/10',
+        }}
+        backdrop='blur'
+        isOpen={isOpen}
+        onClose={onClose}
+      >
         <ModalContent>
           {() => (
             <>
@@ -45,7 +57,7 @@ export default function NextModal({ payload }: IModal) {
                 Acerca del Vuelo.
               </ModalHeader>
               <ModalBody>
-               <FlightInfo flight={flight} />  
+                <FlightInfo flight={flight} />
               </ModalBody>
               <ModalFooter></ModalFooter>
             </>

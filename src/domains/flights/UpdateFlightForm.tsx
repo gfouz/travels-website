@@ -72,7 +72,51 @@ const UpdateFlightForm = () => {
               />
             </div>
           </div>
-
+          <div className='py-4'>
+            <div className='w-full'>
+              <Input
+                type='number'
+                label='Precio de Infantes'
+                variant='underlined'
+                labelPlacement='outside'
+                {...register('infant_price')}
+                defaultValue={flight?.infant_price?.toString()}
+                classNames={{ label: '!text-gray-800' }}
+                isInvalid={errors.infant_price?.message ? true : false}
+                errorMessage={`${errors.infant_price?.message}`}
+              />
+            </div>
+          </div>
+          <div className='py-4'>
+            <div className='w-full'>
+              <Input
+                type='number'
+                label='Precio de niño'
+                variant='underlined'
+                labelPlacement='outside'
+                {...register('child_price')}
+                defaultValue={flight?.child_price?.toString()}
+                classNames={{ label: '!text-gray-800' }}
+                isInvalid={errors.child_price?.message ? true : false}
+                errorMessage={`${errors.child_price?.message}`}
+              />
+            </div>
+          </div>
+          <div className='py-4'>
+            <div className='w-full'>
+              <Input
+                type='number'
+                label='Precio de Adulto'
+                variant='underlined'
+                labelPlacement='outside'
+                {...register('adult_price')}
+                defaultValue={flight?.adult_price?.toString()}
+                classNames={{ label: '!text-gray-800' }}
+                isInvalid={errors.adult_price?.message ? true : false}
+                errorMessage={`${errors.adult_price?.message}`}
+              />
+            </div>
+          </div>
           <div className='py-4'>
             <div className='w-full'>
               <Input

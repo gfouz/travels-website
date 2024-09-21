@@ -48,8 +48,8 @@ export default function Navbar({ links = defaultLinks }: { links: string[] }) {
           <MotionDropdown />
         </NavbarBrand>
 
-        {links?.map((link) => (
-          <NavbarItem key={link}>
+        {links?.map((link, index) => (
+          <NavbarItem key={index}>
             <Link
               className={
                 pathname !== link

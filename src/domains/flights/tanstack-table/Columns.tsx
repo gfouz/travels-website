@@ -37,9 +37,7 @@ export const columnsProperties = [
   {
     accessorKey: 'actions', // Puedes usar un accessor que no exista en los datos, solo para la presentación
     header: 'Actions', // Título de la columna
-    cell: ({ row }: IRow) => (
-      <Modal payload={row.original} />
-    ),
+    cell: ({ row }: IRow) => <Modal payload={row.original} />,
   },
 ];
 

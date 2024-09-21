@@ -5,7 +5,9 @@ export type Method = 'POST' | 'PUT';
 export type Ticket = {
   id?: string;
   airline?: string;
-  price?: number | string;
+  adult_price: number | string;
+  child_price: number | string;
+  infant_price?: number | string;
   description?: string;
   flight?: Flight;
   ticket_issuer?: User;
@@ -21,7 +23,6 @@ export type TicketFetchFunction = (
 
 export interface TicketObject {
   id: number;
-  price: number | string;
   status: string;
   airline: string;
   booking_code: string;

@@ -98,10 +98,11 @@ export default function TanStackTable() {
         </thead>
         <tbody>
           {table.getRowModel().rows.map((row) => {
+            const { original } = row;
             return (
               <tr
                 key={row.original?.id}
-                className='border border-b border-[#eee] cursor-pointer '
+                className={`border border-b border-[#eee] cursor-pointer ${original?.isConnected && 'bg-violet-700'} `}
               >
                 {row.getVisibleCells().map((cell) => {
                   return (

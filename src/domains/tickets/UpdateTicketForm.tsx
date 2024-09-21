@@ -43,6 +43,9 @@ const UpdateTicketForm = () => {
       last_reservation_date: _last_reservation_date,
       ticket_issuer_id: user?.id,
       flight_id: ticket?.flight?.id,
+      infant_price: flight?.infant_price,
+      child_price: flight?.child_price,
+      adult_price: flight?.adult_price,
     };
     await mutation.mutateAsync(_data);
   };
@@ -78,21 +81,6 @@ const UpdateTicketForm = () => {
                 classNames={{ label: '!text-gray-800' }}
                 isInvalid={errors.booking_code?.message ? true : false}
                 errorMessage={`${errors.booking_code?.message}`}
-              />
-            </div>
-          </div>
-          <div className='py-4'>
-            <div className='w-full'>
-              <Input
-                type='number'
-                label='Precio'
-                variant='underlined'
-                labelPlacement='outside'
-                {...register('price')}
-                defaultValue={ticket?.price?.toString()}
-                classNames={{ label: '!text-gray-800' }}
-                isInvalid={errors.price?.message ? true : false}
-                errorMessage={`${errors.price?.message}`}
               />
             </div>
           </div>
