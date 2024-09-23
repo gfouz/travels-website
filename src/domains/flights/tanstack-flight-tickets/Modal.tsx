@@ -23,10 +23,10 @@ export default function NextModal({ payload }: IModal) {
   //const dispatch = useTicketStore((state) => state.dispatch);
   const { ticket } = useTicketStore((state) => state);
   //const navigate = useNavigate();
-  const handleClick = (data: any) => {
+  /*const handleClick = (data: any) => {
     console.log(data);
     //navigate("/ticket-details", { state: data });
-  };
+  };*/
 
   return (
     <>
@@ -36,8 +36,8 @@ export default function NextModal({ payload }: IModal) {
           color='danger'
           size='sm'
           onPress={() => {
-            //dispatch({ type: 'SET_TICKET', payload: payload });
-            handleClick(payload);
+            dispatch({ type: 'SET_TICKET', payload: payload });
+            //handleClick(payload);
             onOpen();
           }}
           className='capitalize h-[20px]'

@@ -1,12 +1,7 @@
 import Layout from '../../components/layout/Layout.tsx';
 import TanStackTable from './tanstack-table/TanStackTable.tsx';
 
-const links = [
-  '/',
-  '/vuelos',
-  '/pasajes',
-  '/signin',
-];
+const links = ['/', '/vuelos', '/mi reserva', '/signin'];
 
 const FlightsForClients = () => {
   return (

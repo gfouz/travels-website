@@ -49,7 +49,7 @@ const CreateTicketForm = () => {
     };
 
     await mutation.mutateAsync(_data);
-    console.log(mutation.failureReason);
+    //console.log(mutation.failureReason);
   };
 
   return (

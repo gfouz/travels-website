@@ -3,7 +3,6 @@ import TanStackCardList from './FlightList.tsx';
 import Card from './Card.tsx';
 import Filter from './Filter.tsx'; //---------Filter-------//
 
-
 import {
   ColumnDef,
   ColumnFiltersState,
@@ -30,12 +29,13 @@ const url = 'http://127.0.0.1:8000/api/flights/get-flights';
 
 export default function TanStackTable() {
   const { payload } = useGetListQuery(getListService, url, ['get-flights']);
+  const mainFlights = payload?.filter( ft => ft.isConnected == true )
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
 
   const columns = useMemo<ColumnDef<any, any>[]>(() => columnsProperties, []);
 
   const table = useReactTable({
-    data: payload || [],
+    data: mainFlights || [],
     columns,
     filterFns: {},
     state: {
@@ -53,11 +53,11 @@ export default function TanStackTable() {
       <div className=''>
         <header>
           {table.getHeaderGroups().map((headerGroup) => (
-            <div className='w-full flex text-left' key={headerGroup.id}>
+            <div className='w-full flex  text-left' key={headerGroup.id}>
               {headerGroup.headers.map((header) => {
                 return (
                   <section
-                    className='w-full p-6 text-md text-gray-700'
+                    className='w-full p-2 font-extrabold tracking-widest text-xs text-gray-700'
                     key={header.id}
                     colSpan={header.colSpan}
                   >
@@ -93,9 +93,13 @@ export default function TanStackTable() {
             </div>
           ))}
         </header>
-        <div className='grid grid-cols-[repeat(auto-fit,minmax(200px,300px))]  place-content-center gap-2 w-full'>
+        <div className='grid grid-cols-[repeat(auto-fit,minmax(200px,300px))] place-content-center gap-2 w-full'>
           {table.getRowModel().rows.map((row) => {
-            return <div key={row?.original?.id}><Card row={row} /></div>;
+            return (
+              <div key={row?.original?.id}>
+                <Card row={row} />
+              </div>
+            );
           })}
         </div>
       </div>

@@ -7,7 +7,7 @@ export default function Filter({ column }: { column: Column<any, unknown> }) {
 
   return filterVariant === 'range' ? (
     <div>
-      <div className='flex flex-wrap space-x-2'>
+      <div className='flex flex-wrap'>
         {/* See faceted column filters example for min max values functionality */}
         <DebouncedInput
           type='number'

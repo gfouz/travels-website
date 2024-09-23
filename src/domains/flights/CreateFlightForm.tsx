@@ -65,7 +65,7 @@ const CreateFlightForm = () => {
               />
             </div>
           </div>
-           <div className='py-4'>
+          <div className='py-4'>
             <div className='w-full'>
               <Input
                 type='number'

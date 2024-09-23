@@ -1,13 +1,14 @@
-import { useTicketStore } from '../../store/ticketstore.ts';
 import { Key } from 'react';
+import { Ticket } from '../../tickets.types';
 
-const TicketDetails = () => {
-  const { ticket } = useTicketStore((state) => state);
+type TicketDetailsProps = {
+  ticket: Ticket;
+};
 
+const TicketDetails = ({ ticket }: TicketDetailsProps) => {
   const {
     ticket_issuer,
     flight,
-    id,
     status,
     airline,
     booking_code,
@@ -20,15 +21,12 @@ const TicketDetails = () => {
   const { connected_flight } = flight;
 
   return (
-    <article className='grid grid-cols-[repeat(auto-fit,minmax(200px,300px))] py-4 place-content-center gap-2 w-full bg-gray-50'>
+    <article className='grid grid-cols-[repeat(auto-fit,minmax(200px,300px))] py-18 place-content-center gap-2 w-full bg-gray-50'>
       {/* Ticket Issuer Section */}
       <section className='p-4 text-sm rounded-lg shadow-md border border-gray-300'>
         <h1 className='text-xl font-extrabold text-gray-800 mb-6'>
-          Ticket Issuer
+          Emisor del Pasaje
         </h1>
-        <h2 className='text-md font-semibold text-gray-700 mb-4'>
-          Emisor del Ticket
-        </h2>
         <p className='text-gray-600'>
           <strong>Nombre:</strong> {ticket_issuer?.first_name}
         </p>
@@ -40,11 +38,8 @@ const TicketDetails = () => {
       {/* Flight Section */}
       <section className='p-4 text-sm border border-gray-300 rounded-lg shadow-md'>
         <h2 className='text-xl font-semibold text-gray-700 mb-4'>
-          Detalles del Vuelo
+          Vuelo Principal
         </h2>
-        <p className='text-gray-600'>
-          <strong>ID del Vuelo:</strong> {flight?.id}
-        </p>
 
         <p className='text-gray-600'>
           <strong>Lugar de Salida:</strong> {flight?.departure_place}
@@ -113,10 +108,16 @@ const TicketDetails = () => {
           Detalles del Pasaje
         </h2>
         <p className='text-gray-600'>
-          <strong>ID:</strong> {id}
-        </p>
-        <p className='text-gray-600'>
-          <strong>Estado:</strong> {status}
+          <strong>Estado:</strong>{' '}
+          <span
+            className={
+              status == 'available' &&
+              'tracking-widest font-extrabold text-lime-500' ||
+              status == 'booked' && 'tracking-widest font-extrabold text-rose-500'
+            }
+          >
+            {status}
+          </span>
         </p>
         <p className='text-gray-600'>
           <strong>Aerolínea:</strong> {airline}
@@ -137,7 +138,7 @@ const TicketDetails = () => {
           <strong>Descripción:</strong> {description}
         </p>
         <p>
-          <strong>Creado En:</strong>{' '}
+          <strong>Emitido el:</strong>{' '}
           {new Date(`${created_at}`).toLocaleString()}
         </p>
       </section>

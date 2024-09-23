@@ -1,8 +1,7 @@
-import { Button } from '@nextui-org/button';
-import { Link } from '@nextui-org/link';
-
 import { Row, flexRender } from '@tanstack/react-table';
-import { columnsProperties } from './Columns';
+import WhatsAppButton from './WhatsAppButton';
+
+
 
 export default function Card({ row }: { row: Row<any> }) {
   return (
@@ -18,7 +17,6 @@ export default function Card({ row }: { row: Row<any> }) {
         <div className='p-5'>
           <div className='font-normal text-gray-700 dark:text-gray-400'>
             <div
-              
               className={`p-4 cursor-pointer bg-gray-800 rounded-lg shadow-lg `}
             >
               {row.getVisibleCells().map((cell) => (
@@ -31,16 +29,7 @@ export default function Card({ row }: { row: Row<any> }) {
               ))}
             </div>
           </div>
-          <Button
-            showAnchorIcon
-            href='checkins/create/'
-            as={Link}
-            size='md'
-            color='danger'
-            className='mt-4'
-          >
-            Reserva Ahora!
-          </Button>
+         <WhatsAppButton />
         </div>
       </div>
     </section>

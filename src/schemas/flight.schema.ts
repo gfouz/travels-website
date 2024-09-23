@@ -48,17 +48,26 @@ export const FlightDataSchema = z
     departure_date: departureDateSchema,
     luggage: z.string(),
     infant_price: z
-    .string()
-    .transform((val) => parseFloat(val))
-    .refine((num) => !isNaN(num) && num > 0, 'Price must be a positive number'),
+      .string()
+      .transform((val) => parseFloat(val))
+      .refine(
+        (num) => !isNaN(num) && num > 0,
+        'Price must be a positive number',
+      ),
     child_price: z
-    .string()
-    .transform((val) => parseFloat(val))
-    .refine((num) => !isNaN(num) && num > 0, 'Price must be a positive number'),
+      .string()
+      .transform((val) => parseFloat(val))
+      .refine(
+        (num) => !isNaN(num) && num > 0,
+        'Price must be a positive number',
+      ),
     adult_price: z
-    .string()
-    .transform((val) => parseFloat(val))
-    .refine((num) => !isNaN(num) && num > 0, 'Price must be a positive number'),
+      .string()
+      .transform((val) => parseFloat(val))
+      .refine(
+        (num) => !isNaN(num) && num > 0,
+        'Price must be a positive number',
+      ),
   })
   .refine(
     (data) => {

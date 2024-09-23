@@ -2,8 +2,9 @@ export type Method = 'POST' | 'PUT';
 
 export interface Flight {
   id?: string;
-  adult_price: number | string;
-  child_price: number | string;
+  status?: string;
+  adult_price?: number | string;
+  child_price?: number | string;
   infant_price?: number | string;
   flight_number?: string;
   departure_place?: string;
@@ -11,6 +12,7 @@ export interface Flight {
   departure_time?: string;
   arrival_time?: string;
   departure_date?: string;
+  connected_flight?: Flight[];
   luggage?: number | string;
 }
 

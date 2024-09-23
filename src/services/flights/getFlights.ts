@@ -27,3 +27,5 @@ export const getFlights = async () => {
     console.error('Error al obtener los datos:', error);
   }
 };
+
+//Fouz Jiménez CR3456

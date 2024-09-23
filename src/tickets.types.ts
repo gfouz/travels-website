@@ -4,7 +4,10 @@ export type Method = 'POST' | 'PUT';
 
 export type Ticket = {
   id?: string;
+  status?: string;
   airline?: string;
+  created_at?: string;
+  booking_code?: string;
   adult_price: number | string;
   child_price: number | string;
   infant_price?: number | string;
@@ -21,7 +24,7 @@ export type TicketFetchFunction = (
   token?: string,
 ) => Promise<any>;
 
-export interface TicketObject {
+/*export interface TicketObject {
   id: number;
   status: string;
   airline: string;
@@ -40,7 +43,7 @@ export interface OriginFlight {
   arrival_time: string;
   departure_date: string;
   luggage: number;
-  connected_flight?: FlightConnected[];
+  connected_flight?: Flight;
   tickets: Ticket[];
 }
 
@@ -72,4 +75,4 @@ export interface FullTicket {
 
 export interface TicketI {
   ticket: FullTicket;
-}
+}*/

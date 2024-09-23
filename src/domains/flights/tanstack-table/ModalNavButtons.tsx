@@ -36,7 +36,7 @@ export default function ModalNavButton({ flight }: ModalNavButtonProps) {
   return warning == false ? (
     <>
       <div className=' gap-1'>
-        <div className='w-full flex justify-center items-center gap-2'>
+        <div className='w-full flex flex-wrap justify-center items-center gap-2'>
           <Button
             className='font-extrabold tracking-widest'
             showAnchorIcon
@@ -44,7 +44,7 @@ export default function ModalNavButton({ flight }: ModalNavButtonProps) {
             as={Link}
             size='sm'
           >
-            Añadir
+            Añadir Vuelo
           </Button>
           <Button
             className='font-extrabold tracking-widest'
@@ -64,8 +64,18 @@ export default function ModalNavButton({ flight }: ModalNavButtonProps) {
           >
             Duplicar
           </Button>
+          <Button
+            className='font-extrabold tracking-widest'
+            showAnchorIcon
+            href='flights/details/'
+            as={Link}
+            size='sm'
+          >
+            Acerca del Vuelo
+          </Button>
         </div>
       </div>
+
       <div className='flex justify-center items-center gap-2'>
         <Button
           showAnchorIcon
@@ -97,7 +107,7 @@ export default function ModalNavButton({ flight }: ModalNavButtonProps) {
           as={Link}
           size='sm'
         >
-          Asociar a otro
+          Conectar Vuelo
         </Button>
         <Button
           onPress={() => {

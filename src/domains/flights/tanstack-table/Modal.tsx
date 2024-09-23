@@ -30,6 +30,7 @@ export default function NextModal({ payload }: IModal) {
           variant='shadow'
           color='danger'
           onPress={() => {
+            //console.log(payload)
             dispatch({ type: 'SET_FLIGHT', payload: payload });
             onOpen();
           }}

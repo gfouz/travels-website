@@ -24,10 +24,10 @@ export default function NextModal({ payload }: IModal) {
   const { ticket } = useTicketStore((state) => state);
 
   const navigate = useNavigate();
-  const handleClick = (data: any) => {
-    console.log(data);
+  /*const handleClick = (data: any) => {
+    //console.log(data);
     navigate('/tickets', { state: data });
-  };
+  };*/
 
   return (
     <>

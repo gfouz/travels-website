@@ -36,7 +36,7 @@ export default function ModalNavButton({ passenger }: ModalNavButtonProps) {
   return warning == false ? (
     <>
       <div className='w-full flex justify-center items-center gap-2'>
-        <Button showAnchorIcon href='passenger/update' as={Link} size='sm'>
+        <Button showAnchorIcon href='passengers/update' as={Link} size='sm'>
           Editar
         </Button>
 

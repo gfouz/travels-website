@@ -3,7 +3,7 @@ import TicketDetailsComponent from './TicketDetailsComponent.tsx';
 
 const TicketDetailsPage = () => {
   return (
-    <Layout model='Pasajes'>
+    <Layout model='Pasajes (detalles)'>
       <TicketDetailsComponent />
     </Layout>
   );

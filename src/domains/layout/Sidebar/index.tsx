@@ -68,7 +68,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, model }: SidebarProps) => {
       {/* <!-- SIDEBAR HEADER --> */}
       <div className='flex items-center justify-between gap-2 px-6 py-5.5 lg:py-6.5'>
         <NavLink to='/'>
-          <h2 className='text-xl text-white font-extrabold'>
+          <h2 className='text-sm tracking-widest text-white font-extrabold'>
             {model ? model : 'Travel'}
           </h2>
         </NavLink>
@@ -124,18 +124,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, model }: SidebarProps) => {
                   Pasajes
                 </NavLink>
               </li>
-              <li>
-                <NavLink
-                  to='/checkins'
-                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
-                    pathname.includes('settings') &&
-                    'bg-graydark dark:bg-meta-4'
-                  }`}
-                >
-                  <CheckIcon />
-                  CheckIns
-                </NavLink>
-              </li>
+              
               <li>
                 <NavLink
                   to='/settings'

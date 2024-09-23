@@ -1,6 +1,8 @@
 import Modal from './Modal.tsx';
 import { Ticket } from '../../../tickets.types.ts';
 
+type IGetValue = () => string;
+
 type OriginalI = {
   original: Ticket;
 };
@@ -16,11 +18,29 @@ export const columnsProperties = [
   },
   {
     accessorKey: 'status',
-    header: 'estado',
+    cell: (info: { getValue: IGetValue }) => (
+      <i
+        className={`tracking-widest ${(info.getValue() == 'available' && 'text-green-400') || (info.getValue() == 'booked' && 'text-rose-500')} font-extrabold`}
+      >
+        {info.getValue()}
+      </i>
+    ),
+    header: 'Estado',
   },
   {
-    accessorKey: 'price',
-    header: 'Precio',
+    accessorKey: 'infant_price',
+    cell: (info: { getValue: IGetValue }) => (
+      <i className=''>{info.getValue()}</i>
+    ),
+    header: 'Precio (Infantes)',
+  },
+  {
+    accessorKey: 'child_price',
+    header: 'Precio (Niños)',
+  },
+  {
+    accessorKey: 'adult_price',
+    header: 'Precio (Adultos)',
   },
   {
     accessorKey: 'booking_code',

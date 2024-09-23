@@ -19,8 +19,16 @@ export const columnsProperties = [
     header: 'estado',
   },
   {
-    accessorKey: 'price',
-    header: 'Precio',
+    accessorKey: 'infant_price',
+    header: 'Precio (Infantes)',
+  },
+  {
+    accessorKey: 'child_price',
+    header: 'Precio (Niños)',
+  },
+  {
+    accessorKey: 'adult_price',
+    header: 'Precio (Adultos)',
   },
   {
     accessorKey: 'booking_code',

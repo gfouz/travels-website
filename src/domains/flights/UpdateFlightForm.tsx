@@ -4,6 +4,8 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { DatePicker } from '@nextui-org/date-picker';
 import { Input } from '@nextui-org/input';
 import { TimeInput } from '@nextui-org/date-input';
+import { parseDate, parseTime } from '@internationalized/date';
+
 import { formatDate, formatTime } from './constants.ts';
 import { useUserStore } from '../../store/userstore.ts';
 import { useFlightStore } from '../../store/flightstore.ts';
@@ -159,6 +161,9 @@ const UpdateFlightForm = () => {
                       input: 'datepicker-input',
                       label: '!text-gray-800',
                     }}
+                    defaultValue={parseDate(
+                      flight?.departure_date?.split('T')[0] || '',
+                    )}
                     isInvalid={errors.departure_date?.message ? true : false}
                     errorMessage={`${errors.departure_date?.message}`}
                   />
@@ -179,6 +184,7 @@ const UpdateFlightForm = () => {
                     label='Hora del Vuelo'
                     labelPlacement='outside'
                     {...field}
+                    defaultValue={parseTime(flight?.departure_time || '')}
                     isInvalid={errors.departure_time?.message ? true : false}
                     errorMessage='Please enter a valid time'
                   />
@@ -201,6 +207,7 @@ const UpdateFlightForm = () => {
                     labelPlacement='outside'
                     isInvalid={errors.arrival_time?.message ? true : false}
                     errorMessage='Please enter a valid time'
+                    defaultValue={parseTime(flight?.arrival_time || '')}
                   />
                 )}
               />
