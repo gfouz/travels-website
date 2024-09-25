@@ -12,6 +12,8 @@ const reducer = (state: FlightStore, action: FlightAction) => {
 export const initialState = {
   id: undefined,
   price: undefined,
+  isMain: false,
+  isConnected: false,
   flight_number: undefined,
   departure_place: undefined,
   arrival_place: undefined,

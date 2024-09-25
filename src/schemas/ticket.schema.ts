@@ -13,6 +13,9 @@ const lastReservationDateSchema = z.object({
 // Esquema de validación con Zod
 export const TicketSchema = z.object({
   airline: z.string().min(1, 'Airline is required'),
+  first_name: z.string().min(1, 'El nombre es obligatorio'),
+  last_name: z.string().min(1, 'El apellido es obligatorio'),
+  passport: z.string().min(1, 'El pasaporte es obligatorio'),
   description: z.string(),
   booking_code: z.string().min(1, 'Código es requerido'),
   last_reservation_date: lastReservationDateSchema,

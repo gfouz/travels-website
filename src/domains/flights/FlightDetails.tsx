@@ -4,15 +4,18 @@ const FlightDetails = () => {
   const { flight } = useFlightStore((state) => state);
 
   const formatPrice = ( price: string | number | undefined ) => {
-    return price === 0.0 ? 'Incluido' : `$${price}`;
+    return price == 0.00  ? 'Incluido' : `$ ${price}`;
   };
+  function formatDate(date: string | number | undefined){
+    const _date = date === undefined ? '': date
+     return `${new Date(_date.toLocaleString())}`
+  }
   return (
-    <div className='max-w-4xl mx-auto p-6  rounded-lg shadow-lg'>
-      <h2 className='text-2xl font-semibold mb-4'>Detalles del Vuelo</h2>
-
+    <div className='grid grid-cols-[repeat(auto-fit,minmax(200px,300px))] py-4 place-content-center gap-2 w-full bg-gray-50'>
       {/* Sección de vuelo principal */}
-      <div className='mb-6 border-b pb-4'>
-        <h3 className='text-xl font-bold'>Vuelo Principal</h3>
+       <section className={`${flight?.isConnected && 'text-amber-300' || flight?.isMain && 'text-emerald-300'} p-4 text-sm rounded-lg shadow-md border border-gray-300`}>
+        <h3 className='text-center text-xl font-bold'>{flight?.isMain && 'Vuelo Principal' || flight?.isConnected && 'Vuelo Conectado'}</h3>
+        <hr className='mt-2'></hr>
         <p>
           <strong>Número de vuelo:</strong> {flight.flight_number}
         </p>
@@ -23,7 +26,7 @@ const FlightDetails = () => {
           <strong>Destino:</strong> {flight.arrival_place}
         </p>
         <p>
-          <strong>Fecha de salida:</strong> {flight.departure_date}{' '}
+          <strong>Fecha de salida:</strong> {formatDate(flight.departure_date)}{' '}
           <strong>Hora de salida:</strong>{flight.departure_time}
         </p>
         <p>
@@ -41,14 +44,15 @@ const FlightDetails = () => {
         <p>
           <strong>Precio Infante:</strong> {formatPrice(flight.infant_price)}
         </p>
-      </div>
+      </section>
 
       {/* Sección de vuelo conectado */}
       {flight.connected_flight && flight.connected_flight.length > 0 && (
-        <div>
-          <h3 className='text-xl font-bold'>Vuelo Conectado</h3>
+      <section className='p-4 text-yellow-200 text-sm rounded-lg shadow-md border border-gray-300'>
+          <h3 className='text-center text-xl font-bold'>Vuelos Conectados</h3>
+           <hr className='mt-2'></hr>
           {flight.connected_flight.map((connectedFlight, index) => (
-            <div key={index} className='mb-4 border-b pb-3'>
+            <div key={index} className='mb-4 pb-3'>
               <p>
                 <strong>Número de vuelo:</strong>{' '}
                 {connectedFlight.flight_number}
@@ -85,7 +89,7 @@ const FlightDetails = () => {
               </p>
             </div>
           ))}
-        </div>
+      </section>
       )}
     </div>
   );

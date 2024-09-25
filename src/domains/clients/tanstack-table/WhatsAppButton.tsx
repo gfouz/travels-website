@@ -3,26 +3,27 @@ import { Link } from '@nextui-org/link';
 
 
 const WhatsAppButton = () => {
-    const phoneNumber = '+5354278815'; // Número de teléfono predeterminado
-    const message = 'Hola, ¿cómo estás?'; // Mensaje predeterminado
-    const whatsappUrl = 'https://api.whatsapp.com/send?phone=+5354278815';
+  
+    const phoneNumber = '+1234567890'; // Número de teléfono con el código de país
+    const message = 'Hola, me gustaría hablar contigo';
+    const handleWhatsAppClick = () => {
+      const url = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`;
+      window.open(url, '_blank'); // Esto abrirá WhatsApp en una nueva pestaña o aplicación
+    };
 
     return (
-        <a 
-            href={whatsappUrl} 
-            target="_blank" 
-            rel="noopener noreferrer" 
-        >
+       
            <Button
             showAnchorIcon
             as={Link}
             size='md'
             color='danger'
             className='mt-4'
+            onPress={handleWhatsAppClick}
           >
             Reserva Ahora!
           </Button>
-        </a>
+
     );
 };
 

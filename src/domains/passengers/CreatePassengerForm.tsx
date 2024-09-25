@@ -57,7 +57,7 @@ const CreatePassengerForm = () => {
                 variant='underlined'
                 {...register('first_name')}
                 classNames={{ label: '!text-gray-800' }}
-                isInvalid={errors.flight_number?.message ? true : false}
+                isInvalid={errors.first_name?.message ? true : false}
                 errorMessage={`${errors?.first_name?.message}`}
               />
             </div>
@@ -70,7 +70,7 @@ const CreatePassengerForm = () => {
                 variant='underlined'
                 {...register('last_name')}
                 classNames={{ label: '!text-gray-800' }}
-                isInvalid={errors.departure_place?.message ? true : false}
+                isInvalid={errors.last_name?.message ? true : false}
                 errorMessage={`${errors?.last_name?.message}`}
               />
             </div>
@@ -82,7 +82,7 @@ const CreatePassengerForm = () => {
                 variant='underlined'
                 {...register('passport')}
                 classNames={{ label: '!text-gray-800' }}
-                isInvalid={errors.arrival_place?.message ? true : false}
+                isInvalid={errors.passport?.message ? true : false}
                 errorMessage={`${errors.passport?.message}`}
               />
             </div>

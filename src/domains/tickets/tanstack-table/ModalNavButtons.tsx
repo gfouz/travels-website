@@ -25,7 +25,7 @@ export default function ModalNavButton({ ticket_id }: { ticket_id?: string }) {
   const { ticket } = useTicketStore((state) => state);
   const navigate = useNavigate();
 
-  const handleClick = (data: any) => {
+  const handleClick = () => {
     navigate('/ticket-details', { state: ticket });
   };
   return warning == false ? (

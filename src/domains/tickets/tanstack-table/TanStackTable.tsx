@@ -99,7 +99,7 @@ export default function TanStackTable({ payload }: TanStackTableProps) {
             const { original } = row;
             return (
               <tr
-                className={`pointer border border-b border-[#eee] ${original?.status == 'booked' && 'text-rose-500'}`}
+                className={`pointer border border-b border-[#eee] ${original?.status == 'reserved' && 'text-rose-500'}`}
                 key={row.original.id}
               >
                 {row.getVisibleCells().map((cell) => {

@@ -10,10 +10,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 const Loader = () => {
   return (
     <div className='min-h-screen grid place-items-center'>
-      <div className='inline-flex justify-center items-center text-[6vw] font-bold '>
-        <span className='mr-[2px] text-green-700'>Loading</span>
-        <div className='loader mt-2'></div>
-      </div>
+      <div className="h-16 w-16 animate-spin rounded-full border-4 border-solid border-primary border-t-transparent"></div>
     </div>
   );
 };

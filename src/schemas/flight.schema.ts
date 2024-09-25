@@ -51,21 +51,21 @@ export const FlightDataSchema = z
       .string()
       .transform((val) => parseFloat(val))
       .refine(
-        (num) => !isNaN(num) && num > 0,
+        (num) => !isNaN(num) && num >= 0,
         'Price must be a positive number',
       ),
     child_price: z
       .string()
       .transform((val) => parseFloat(val))
       .refine(
-        (num) => !isNaN(num) && num > 0,
+        (num) => !isNaN(num) && num >= 0,
         'Price must be a positive number',
       ),
     adult_price: z
       .string()
       .transform((val) => parseFloat(val))
       .refine(
-        (num) => !isNaN(num) && num > 0,
+        (num) => !isNaN(num) && num >= 0,
         'Price must be a positive number',
       ),
   })
@@ -88,5 +88,38 @@ export const FlightDataSchema = z
     },
   );
 
+  export const ConnectedFlightDataSchema = z
+  .object({
+    flight_number: z.string().min(1, 'Flight number is required'),
+    departure_place: z.string().min(1, 'Departure place is required'),
+    arrival_place: z.string().min(1, 'Arrival place is required'),
+    departure_time: timeSchema,
+    arrival_time: timeSchema,
+    departure_date: departureDateSchema,
+    luggage: z.string(),
+  })
+  .refine(
+    (data) => {
+      const departureDate = new Date(
+        `${data.departure_date.year}-${data.departure_date.month}-${data.departure_date.day}`,
+      );
+      const departureDateTime = compareTime(departureDate, data.departure_time);
+      const arrivalDateTime = compareTime(departureDate, data.arrival_time);
+
+      console.log('Departure DateTime:', departureDateTime.toISOString());
+      console.log('Arrival DateTime:', arrivalDateTime.toISOString());
+
+      // Comparación de fechas y horas
+      return arrivalDateTime > departureDateTime;
+    },
+    {
+      message: 'Arrival time must be after departure time',
+    },
+  );
+
 export type FlightFormData = z.infer<typeof FlightDataSchema>;
 export type timeSchemaFormData = z.infer<typeof timeSchema>;
+
+
+export type ConnectedFlightFormData = z.infer<typeof ConnectedFlightDataSchema>;
+

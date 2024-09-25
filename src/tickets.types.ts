@@ -6,10 +6,13 @@ export type Ticket = {
   id?: string;
   status?: string;
   airline?: string;
+  first_name?: string;
+  last_name?: string;
+  passport?: string;
   created_at?: string;
   booking_code?: string;
-  adult_price: number | string;
-  child_price: number | string;
+  adult_price?: number | string;
+  child_price?: number | string;
   infant_price?: number | string;
   description?: string;
   flight?: Flight;

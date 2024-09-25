@@ -1,15 +1,7 @@
-import Modal from './Modal';
-import { Flight } from '../../../flights.types.ts';
 
 type IDateGetValue = () => string | number | Date;
 type IGetValue = () => string;
-type OriginalI = {
-  original: Flight;
-};
 
-interface IRow {
-  row: OriginalI;
-}
 
 export const columnsProperties = [
   {

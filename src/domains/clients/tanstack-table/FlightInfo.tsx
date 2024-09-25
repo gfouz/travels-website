@@ -1,3 +1,4 @@
+import { Key } from 'react';
 import { Flight } from '../../../flights.types.ts';
 
 type FlightInfoProps = {
@@ -6,15 +7,17 @@ type FlightInfoProps = {
 
 export default function FlightInfo({ flight }: FlightInfoProps) {
   const { connected_flight } = flight;
+  function formatDate(date: string | number | undefined){
+    const _date = date === undefined ? '': date
+     return `${new Date(_date.toLocaleString())}`
+  }
   return (
     <article className='modal-text-size'>
       <section className='p-6 border border-gray-300 rounded-lg shadow-lg'>
         <p className='text-gray-600'>
           <strong>ID del Vuelo:</strong> {flight.id}
         </p>
-        <p className='text-gray-600'>
-          <strong>Rol:</strong> {flight.role}
-        </p>
+        
         <p className='text-gray-600'>
           <strong>Lugar de Salida:</strong> {flight.departure_place}
         </p>
@@ -32,7 +35,7 @@ export default function FlightInfo({ flight }: FlightInfoProps) {
         </p>
         <p className='text-gray-600'>
           <strong>Fecha de Salida:</strong>{' '}
-          {new Date(flight.departure_date).toLocaleString()}
+          { formatDate(flight?.departure_date) }
         </p>
         <p className='text-gray-600'>
           <strong>Equipaje Permitido:</strong> {flight.luggage} kg
@@ -47,7 +50,7 @@ export default function FlightInfo({ flight }: FlightInfoProps) {
             Vuelos Conectados
           </h2>
           {connected_flight.map(
-            (cf: FlightConnected, index: Key | null | undefined) => (
+            (cf: Flight, index: Key | null | undefined) => (
               <div key={index} className='bg-gray-50'>
                 <p className='text-gray-600'>
                   <strong>Número de Vuelo:</strong> {cf.flight_number}
@@ -66,7 +69,7 @@ export default function FlightInfo({ flight }: FlightInfoProps) {
                 </p>
                 <p className='text-gray-600'>
                   <strong>Fecha de Salida:</strong>{' '}
-                  {new Date(cf.departure_date).toLocaleString()}
+                  { formatDate(cf.departure_date)}
                 </p>
               </div>
             ),

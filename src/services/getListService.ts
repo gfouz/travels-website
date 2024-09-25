@@ -5,12 +5,13 @@
   return posts;
 };*/
 
-export const getListService = async (url: string) => {
+export const getListService = async (url: string, token?: string ) => {
   try {
     const requestOptions = {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
       },
     };
 

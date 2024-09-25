@@ -1,7 +1,7 @@
 import { useState, useMemo } from 'react';
-import TanStackCardList from './FlightList.tsx';
 import Card from './Card.tsx';
 import Filter from './Filter.tsx'; //---------Filter-------//
+
 
 import {
   ColumnDef,
@@ -25,11 +25,12 @@ declare module '@tanstack/react-table' {
     filterVariant?: 'text' | 'range' | 'select';
   }
 }
-const url = 'http://127.0.0.1:8000/api/flights/get-flights';
+const url = 'http://127.0.0.1:8000/api/flights/get-flights/clients';
 
 export default function TanStackTable() {
+  
   const { payload } = useGetListQuery(getListService, url, ['get-flights']);
-  const mainFlights = payload?.filter( ft => ft.isConnected == true )
+  const mainFlights = payload?.filter( ft => ft.isMain == true )
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
 
   const columns = useMemo<ColumnDef<any, any>[]>(() => columnsProperties, []);
@@ -59,7 +60,6 @@ export default function TanStackTable() {
                   <section
                     className='w-full p-2 font-extrabold tracking-widest text-xs text-gray-700'
                     key={header.id}
-                    colSpan={header.colSpan}
                   >
                     {header.isPlaceholder ? null : (
                       <>

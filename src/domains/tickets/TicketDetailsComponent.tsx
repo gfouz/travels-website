@@ -1,7 +1,12 @@
+import { Flight } from '../../flights.types.ts';
 import { useTicketStore } from '../../store/ticketstore.ts';
 import { Key } from 'react';
 
 const TicketDetails = () => {
+  function formatDate(date: string | number | undefined){
+    const _date = date === undefined ? '': date
+     return `${new Date(_date.toLocaleString())}`
+  }
   const { ticket } = useTicketStore((state) => state);
 
   const {
@@ -10,6 +15,9 @@ const TicketDetails = () => {
     id,
     status,
     airline,
+    first_name,
+    last_name,
+    passport,
     booking_code,
     infant_price,
     child_price,
@@ -17,23 +25,34 @@ const TicketDetails = () => {
     description,
     created_at,
   } = ticket;
-  const { connected_flight } = flight;
 
   return (
     <article className='grid grid-cols-[repeat(auto-fit,minmax(200px,300px))] py-4 place-content-center gap-2 w-full bg-gray-50'>
       {/* Ticket Issuer Section */}
       <section className='p-4 text-sm rounded-lg shadow-md border border-gray-300'>
         <h1 className='text-xl font-extrabold text-gray-800 mb-6'>
-          Ticket Issuer
+          Emisor del Boleto
         </h1>
-        <h2 className='text-md font-semibold text-gray-700 mb-4'>
-          Emisor del Ticket
-        </h2>
         <p className='text-gray-600'>
           <strong>Nombre:</strong> {ticket_issuer?.first_name}
         </p>
         <p className='text-gray-600'>
           <strong>Apellido:</strong> {ticket_issuer?.last_name}
+        </p>
+      </section>
+      
+      <section className='p-4 text-sm rounded-lg shadow-md border border-gray-300'>
+        <h1 className='text-xl font-extrabold text-gray-800 mb-6'>
+          Datos del Cliente
+        </h1>
+        <p className='text-gray-600'>
+          <strong>Nombre:</strong> {first_name}
+        </p>
+        <p className='text-gray-600'>
+          <strong>Apellidos:</strong> {last_name}
+        </p>
+        <p className='text-gray-600'>
+          <strong>Pasaporte:</strong> {passport}
         </p>
       </section>
 
@@ -74,13 +93,13 @@ const TicketDetails = () => {
       </section>
 
       {/* Connected Flights Section */}
-      {connected_flight && connected_flight.length > 0 && (
+      {flight?.connected_flight && flight?.connected_flight.length > 0 && (
         <section className='p-4 text-sm border border-gray-300 rounded-lg shadow-md'>
           <h2 className='text-xl font-semibold text-gray-700 mb-4'>
             Vuelos Conectados
           </h2>
-          {connected_flight.map(
-            (cf: FlightConnected, index: Key | null | undefined) => (
+          {flight?.connected_flight.map(
+            (cf: Flight, index: Key | null | undefined) => (
               <div key={index} className='mb-4 p-4 bg-gray-50'>
                 <p className='text-gray-600'>
                   <strong>Número de Vuelo:</strong> {cf.flight_number}
@@ -99,7 +118,7 @@ const TicketDetails = () => {
                 </p>
                 <p className='text-gray-600'>
                   <strong>Fecha de Salida:</strong>{' '}
-                  {new Date(cf.departure_date).toLocaleString()}
+                  { formatDate(cf.departure_date) }
                 </p>
               </div>
             ),

@@ -11,7 +11,7 @@ export default function ModalNavButton({ flight_id }: { flight_id?: string }) {
 
   const user = useUserStore((state) => state.user);
 
-  const { mutation } = useDeleteMutation(deleteRequest, url, user?.token);
+  const { mutation } = useDeleteMutation(deleteRequest, url, ['get-users'], ['delete-user'], user?.token);
 
   return warning == false ? (
     <>

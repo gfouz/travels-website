@@ -1,15 +1,6 @@
-import Modal from './Modal.tsx';
-import { Ticket } from '../../../tickets.types.ts';
 
 type IGetValue = () => string;
 
-type OriginalI = {
-  original: Ticket;
-};
-
-interface IRow {
-  row: OriginalI;
-}
 
 export const columnsProperties = [
   {

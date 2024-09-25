@@ -33,7 +33,12 @@ const initialState = {
   id: undefined,
   status: undefined,
   airline: undefined,
-  price: undefined,
+  first_name: undefined,
+  last_name: undefined,
+  passport: undefined,
+  infant_price: undefined,
+  child_price: undefined,
+  adult_price: undefined,
   last_reservation_date: undefined,
 };
 //Redux-like patterns store

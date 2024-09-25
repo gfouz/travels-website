@@ -85,7 +85,43 @@ const CreateTicketForm = () => {
               />
             </div>
           </div>
+          <div className='py-4'>
+            <div className='w-full'>
+              <Input
+                label='Nombre del Cliente'
+                variant='underlined'
+                {...register('first_name')}
+                classNames={{ label: '!text-gray-800' }}
+                isInvalid={errors.first_name?.message ? true : false}
+                errorMessage={`${errors?.first_name?.message}`}
+              />
+            </div>
+          </div>
 
+          <div className='py-4'>
+            <div className='w-full'>
+              <Input
+                label='Apellidos'
+                variant='underlined'
+                {...register('last_name')}
+                classNames={{ label: '!text-gray-800' }}
+                isInvalid={errors.last_name?.message ? true : false}
+                errorMessage={`${errors?.last_name?.message}`}
+              />
+            </div>
+          </div>
+          <div className='py-4'>
+            <div className='w-full'>
+              <Input
+                label='Pasaporte'
+                variant='underlined'
+                {...register('passport')}
+                classNames={{ label: '!text-gray-800' }}
+                isInvalid={errors.passport?.message ? true : false}
+                errorMessage={`${errors.passport?.message}`}
+              />
+            </div>
+          </div>
           <div className='py-4'>
             <div className='w-full'>
               <Input

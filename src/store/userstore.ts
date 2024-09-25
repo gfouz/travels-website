@@ -25,3 +25,12 @@ const userState = persist<UserStore>(
   },
 );
 export const useUserStore = create(userState);
+
+/*example of how to use the store
+
+import {useUserStore} from 'userstore.ts'
+const user = useUserStore( state => state.user )
+const dispatch = useUserStore((state) => state.dispatch)
+dispatch({type:'SET_USER', payload: user}) 
+dispatch({type:'LOG_OUT', payload: user}) 
+*/

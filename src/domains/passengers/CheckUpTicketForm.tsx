@@ -6,6 +6,7 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { queryFunction } from '../../services/queryFunction.ts';
 import TicketDetails from './TicketDetailsComponent.tsx';
 
+
 import {
   CheckUpFormData,
   CheckUpSchema,

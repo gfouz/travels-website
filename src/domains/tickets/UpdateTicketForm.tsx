@@ -43,9 +43,9 @@ const UpdateTicketForm = () => {
       last_reservation_date: _last_reservation_date,
       ticket_issuer_id: user?.id,
       flight_id: ticket?.flight?.id,
-      infant_price: flight?.infant_price,
-      child_price: flight?.child_price,
-      adult_price: flight?.adult_price,
+      infant_price: ticket?.flight?.infant_price,
+      child_price: ticket?.flight?.child_price,
+      adult_price: ticket?.flight?.adult_price,
     };
     await mutation.mutateAsync(_data);
   };
@@ -84,7 +84,43 @@ const UpdateTicketForm = () => {
               />
             </div>
           </div>
+          <div className='py-4'>
+            <div className='w-full'>
+              <Input
+                label='Nombre'
+                variant='underlined'
+                {...register('first_name')}
+                classNames={{ label: '!text-gray-800' }}
+                isInvalid={errors.first_name?.message ? true : false}
+                errorMessage={`${errors?.first_name?.message}`}
+              />
+            </div>
+          </div>
 
+          <div className='py-4'>
+            <div className='w-full'>
+              <Input
+                label='Apellidos'
+                variant='underlined'
+                {...register('last_name')}
+                classNames={{ label: '!text-gray-800' }}
+                isInvalid={errors.last_name?.message ? true : false}
+                errorMessage={`${errors?.last_name?.message}`}
+              />
+            </div>
+          </div>
+          <div className='py-4'>
+            <div className='w-full'>
+              <Input
+                label='Pasaporte'
+                variant='underlined'
+                {...register('passport')}
+                classNames={{ label: '!text-gray-800' }}
+                isInvalid={errors.passport?.message ? true : false}
+                errorMessage={`${errors.passport?.message}`}
+              />
+            </div>
+          </div>
           <div className='py-4'>
             <div className='w-full'>
               <Input

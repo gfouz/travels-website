@@ -97,3 +97,7 @@ Feel free to reach out if you have any questions or need further assistance!
 Happy coding!
 
 npm i date-fns
+
+./images/icon/icon-calendar.svg referenced in ./images/icon/icon-calendar.svg
+
+./images/icon/icon-arrow-down.svg referenced in ./images/icon/icon-arrow-down.svg

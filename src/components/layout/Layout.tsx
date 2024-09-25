@@ -14,7 +14,7 @@ const Layout = ({ links = defaultlinks, children }: LayoutProps) => {
   return (
     <section className='h-full w-full relative'>
       <span className='fixed top-[80%] left-[5%] z-10'>
-        <WhatsAppIcon color='#222222' size='60' />
+        <WhatsAppIcon color='#222222' size={60} />
       </span>
       <header className='sticky top-0 left-0 z-30'>
         <Navbar links={links} />

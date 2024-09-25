@@ -13,4 +13,4 @@ export type MutationFunction = (
 
 export type DeleteFunction = (url: string, token?: string) => Promise<any>;
 
-export type GetListFunction = (url: string) => Promise<GenericObject[]>;
+export type GetListFunction = (url: string, token?: string) => Promise<GenericObject[]>;

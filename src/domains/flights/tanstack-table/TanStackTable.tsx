@@ -1,5 +1,4 @@
 import { useState, useMemo } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 //onClick={ ()=>{ handleClick(row?.original)}}
 
@@ -19,6 +18,8 @@ import { columnsProperties } from './Columns.tsx';
 import Filter from './Filter.tsx'; //---------Filter-------//
 import { getListService } from '../../../services/getListService.ts';
 import { useGetListQuery } from '../../../hooks/useGetListQuery.tsx';
+import { useUserStore } from '../../../store/userstore.ts';
+
 
 declare module '@tanstack/react-table' {
   //allows us to define custom properties for our columns
@@ -29,7 +30,8 @@ declare module '@tanstack/react-table' {
 const url = 'http://127.0.0.1:8000/api/flights/get-flights';
 
 export default function TanStackTable() {
-  const { payload } = useGetListQuery(getListService, url, ['get-flights']);
+  const user = useUserStore((state) => state.user);
+  const { payload } = useGetListQuery(getListService, url, ['get-flights'], user?.token );
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
 
   const columns = useMemo<ColumnDef<any, any>[]>(() => columnsProperties, []);
@@ -47,7 +49,7 @@ export default function TanStackTable() {
     getSortedRowModel: getSortedRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
   });
-
+  
   return (
     <div className='overflow-x-auto'>
       <table className='w-full table-auto'>
@@ -102,7 +104,7 @@ export default function TanStackTable() {
             return (
               <tr
                 key={row.original?.id}
-                className={`border border-b border-[#eee] cursor-pointer ${original?.isConnected && 'bg-violet-700'} `}
+                className={`border border-b border-[#eee] cursor-pointer ${original?.isMain && 'bg-emerald-700'} `}
               >
                 {row.getVisibleCells().map((cell) => {
                   return (

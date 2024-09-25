@@ -7,7 +7,6 @@ import {
   useDisclosure,
 } from '@nextui-org/modal';
 import { Button } from '@nextui-org/button';
-import { useNavigate } from 'react-router-dom';
 
 import ModalNavButton from './ModalNavButtons.tsx';
 import { Ticket } from '../../../tickets.types.ts';
@@ -23,7 +22,7 @@ export default function NextModal({ payload }: IModal) {
   const dispatch = useTicketStore((state) => state.dispatch);
   const { ticket } = useTicketStore((state) => state);
 
-  const navigate = useNavigate();
+  
   /*const handleClick = (data: any) => {
     //console.log(data);
     navigate('/tickets', { state: data });

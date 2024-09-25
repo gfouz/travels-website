@@ -1,6 +1,8 @@
 export type Method = 'POST' | 'PUT';
 
 export interface Flight {
+  isMain?: boolean;
+  isConnected?: boolean;
   id?: string;
   status?: string;
   adult_price?: number | string;

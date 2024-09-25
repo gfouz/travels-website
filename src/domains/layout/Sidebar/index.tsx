@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import SettingIcon from './SettingIcon.tsx';
-import CheckIcon from './CheckIcon.tsx';
 import TicketIcon from './TicketIcon.tsx';
 import SidebarLinkFlightsGroup from './SidebarLinkFlightsGroup.tsx';
 import SidebarLinkUsersGroup from './SidebarLinkUsersGroup.tsx';

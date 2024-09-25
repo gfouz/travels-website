@@ -28,7 +28,7 @@ export default function NextModal({ payload }: IModal) {
         <Button
           size='md'
           variant='shadow'
-          color='danger'
+          color={ payload?.isConnected ? 'default' : 'danger'}
           onPress={() => {
             //console.log(payload)
             dispatch({ type: 'SET_FLIGHT', payload: payload });
